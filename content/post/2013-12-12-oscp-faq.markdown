@@ -1,0 +1,78 @@
+---
+categories:
+- Security
+- OSCP
+comments: true
+date: 2013-12-12T00:00:00Z
+title: OSCP FAQ
+---
+
+Since publishing the article that detailed my experiences with the [PWB][] labs and the [OSCP][] exam, I have received scores of emails from potential and current students searching for more information and (quite often) hints. While I do my best to answer most of them, it's close to impossible to get to them all as my email debt is already way too high.
+
+From this point on I have decided not to respond to questions directly via email. This post will stand instead of those emails as a point of reference for common OSCP-related questions. As more questions come in I will update this post so that all future readers can benfit from the answers without me having to repost them.
+
+Believe it or not, every single one of these questions has appeared in my inbox.
+
+<!--more-->
+
+> Do I need to be good at programming to do PWB?
+
+I'd say _no_, but it really does help. If you're not good with at least one language, then you're going to have a harder time and you'll probably end up needing to purchase time extensions to get through the labs. Scripting and coding is an important part of the experience, and it's something you really should be able to do. You could probably get through the labs without it, but it will be difficult. My recommendation is to go and spend time learning a language like [Python][], [Ruby][] or even [Bash][] so that you have the ability to automate some of the tasks you'll have to take on.
+
+> Should I do OSCP first, or should I take on other certs (such as [CEH][], [GPEN][] or [CPTE][]) as preparation?
+
+I haven't done CEH, GPEN or CPTE. In fact, to date, OSCP is the only security certification I have attempted to tackle (though I will be taking [CTP][] later this month with a goal of nailing [OSCE][] in January). As a result I don't have a valid opinion of the quality or usefulness of the other certifications. My feeling is that it's down to you, dear reader, to determine which is best for you, just as I did when I was looking for a challenge. If you feel that OSCP is out of your depth then by all means go and find something easier.
+
+> I have done cert _A_, cert _B_, and course _C_. I know language _X_, operating system _Y_ and technology _Z_. Am I ready to do OSCP?
+
+I have no idea. Only you can answer that.
+
+> Is there much web application hacking involved?
+
+It's hard to quantify "much", but yes there is a bit of hacking of web applications involved. Some are known applications, some are custom applications built specifically for the labs. If you're not across the basics before you start, be prepared to ramp up quickly once your lab time commences.
+
+> Do I need to know about assembly language?
+
+There are parts of the course which require you to have a basic understanding of assembly, though only x86 and not x64. I think it's a good idea to get your hands dirty prior to taking the course, because you will be using and adjusting exploits during your lab time.
+
+> How many hours per day did you spend in the labs? Is an hour per day enough?
+
+The short answer is that I spent as many as I possibly could. I paid for just 30 days in the lab which meant that I had to force myself to push hard to get through as many machines as possible without having to pay for more time. It was a cost saver and a personal quest at the same time. On average, my guess is that I spent four or so hours per day, and more on weekends. One hour per day would not be enough, in my opinion, even if you booked 90 days worth of lab time.
+
+My recommendation is to do your best to have larger, unbroken blocks of time rather than lots of smaller chunks of time. This gives you the chance to immerse yourself in a problem and maximises the possibility of you solving it without the context-switching which can be really distruptive to your thought process.
+
+PWB is hard, don't expect to get through it in an hour per day unless you're a guru with lots of experience.
+
+> Can you please give me a hint for **&lt;machine name&gt;** in the PWB labs, because I'm stuck?
+
+No. PWB and OSCP is all about learning to learn. The journey is probably more important than the final destination. I will not give hints, and if you ask for them you'll more than likely receive no response from me. If I do respond, I will probably just say "Try Harder".
+
+> Can I please see your lab notes?
+
+Absolutely not.
+
+> I failed my exam, can you please help me pass it next time?
+
+Let me think about it for a minute ... No. If you ask me this, I'll take your name and pass it on to the Offensive Security team.
+
+> I have been a developer for many years and want to try for OSCP, is it a waste of time?
+
+No, it's not a waste of time, and yes you shoud try for it. This is exactly the scenario I was in, and I don't regret doing it for a one second. Also, I do believe that anyone who is involved with building production systems should do this course as it really does open your eyes. Most developers haven't really got much visibility of what things are like on the front line when it comes to security. This course is the kind of thing that will make them think much more defensively when writing their code.
+
+> Will OSCP provide me with the skills I need to be a penetration tester?
+
+OSCP by itself will not. I think the only thing that can really give you the skills is experience. However, OSCP is a great start and it gives a great foundation on which to build a career as a penetration tester.
+
+In other words, don't stop learning!
+
+  [OSCP]: http://www.offensive-security.com/information-security-certifications/oscp-offensive-security-certified-professional/
+  [OSCE]: http://www.offensive-security.com/information-security-certifications/osce-offensive-security-certified-expert/
+  [PWB]: http://www.offensive-security.com/information-security-training/penetration-testing-with-backtrack/
+  [CTP]: http://www.offensive-security.com/information-security-training/cracking-the-perimeter/
+  [Python]: http://www.python.org/
+  [Ruby]: http://www.ruby-lang.org/
+  [Bash]: http://en.wikipedia.org/wiki/Bash_(Unix_shell)
+  [CEH]: https://www.eccouncil.org/Certification/certified-ethical-hacker
+  [GPEN]: http://www.giac.org/certification/penetration-tester-gpen
+  [CPTE]: http://mile2.com/penetration-testing-ethical-hacking/cpte.html
+

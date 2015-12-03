@@ -1,0 +1,54 @@
+---
+categories:
+- WTF
+- Being in the Industry
+comments: true
+date: 2012-01-27T00:00:00Z
+tags:
+- WTF
+- fail
+title: An Expert at 23
+---
+
+I was about to head to bed when I stumbled across a poorly-titled [article on news.com.au][article]. At first I thought it was going to cover off the best locations around Australia, or perhaps the world, for finding work in a variety of industries. It turned out to be a failed attempt at highlighting the key growth industry areas for jobs in Australia.
+
+It began like this:
+
+> JOBS demanded across several booming sectors will be the best place to find work this year.
+
+Despite the appalling structure and lack of coherence of the opening paragraph I pushed on through the rest of the article, hoping to find some interesting or useful information. Most of content would be fairly obvious to almost every Australian. The bits that could be considered interesting were old news, and nothing in the article made me feel that reading it was a good use of time.
+
+<!--more-->
+
+Then I got to the end and found this:
+
+> For IT expert _Joe Public_, 23, right, the telecommunications and digital industry holds the promise of future growth. _Joe_ studied IT at the University of Technology before completing a one-year placement at Macquarie Telecom.
+>
+> "The industry is enormous and there's plenty of variations and specialisations that you can pursue," he says.
+>
+> _Joe_ now sets up servers and IT networks for various clients' business applications.
+>
+> Asked where he would like to be in five years' time, he says: "What I like is that I can go into a lot of different directions from where I am."
+
+I tried to completely ignore the blatant mistakes but couldn't. Despite the use of the word "right" in the first sentence there was no picture of the interviewee to be found. There's a mention of "the University of Technology" but a failure to mention which one. If this person finished a degree, taking a minimum of 3 years to complete, that would mean that his one year placement finished at the ripe old age of 22 if we assume he started university at 18. This is best case. Working for another year, bringing him to 23 years old, caps his experience at 2 years maximum -- not much for someone considered to be an _I.T. expert_, in the "digital industry" no less!
+
+I've been working professionally as a software developer/engineer/whatever since 1999. During this time I've spent a great deal of time learning, growing, failing, constantly trying to improve, and earning scars along the way. I've been fortunate enough to experience a huge number of different domains within software and have managed to land jobs in other countries than the one that I live in. Now that I am starting my 14th year in the industry I think I might be able to say that I'm no longer a junior. At 23 years old I barely knew my object-oriented earhole from my procedural arsehole, let alone have the gall to call myself an expert or allow someone else to refer to me as one. Doing otherwise would be a lie. To grossly over-generalise: _nobody at the age of 23 can be called an I.T. expert_. Add at least ten years before you're no longer wet behind the ears.
+
+<a href="/uploads/2012/01/senior-lead-expert.jpg" rel="lightbox"><img title="Senior Lead Expert" src="/uploads/2012/01/senior-lead-expert.jpg" width="200" style="float:right;margin-left:5px;margin-bottom:5px" /></a>Even the people that I know and respect, who I consider to be amongst the best, would not think of themselves as experts in their field by that age. To think that is to be overly arrogant. To allow a newspaper to state it on your behalf is stupid and I would consider it more damaging to your reputation than anything else. Don't attempt to make yourself sound like more than you are, as more often than not you tend to come off looking like a fool (see the "Senior Lead Expert" to the right for another example).
+
+Another issue I have with this article, and others that have this focus, is that they imply that these industry sectors are the ones to go for if you're looking for a job _regardless of whether you're interested in the field or not_.
+
+I love what I do. I enjoy most of the work that I am asked to undertake, and more often than not enjoy working with the people in the teams I get to work in. I don't dread getting out of bed and going to work. I look forward to the challenges, and I aim to produce quality stuff where possible while bettering myself in the process. To me, this is way more than a job. It's part of me and I love it.
+
+If you don't love it, don't do it. Don't do it for the money. It's not worth it, for you or for the people you'll work with. If you love it, and you're interested, then the industry will welcome you with open arms. If all you've ever wanted to be is a puppeteer, then go do that instead.
+
+**News.com.au** have done themselves, and Joe Public, a disservice with this article. It's poorly written, lacks anything newsworthy, implies that the subject is claiming to be something he is not, and guides people to a number of industries for the wrong reasons.
+
+If you want to read news which is meaningful, well-written, edited and at least researched to a semi-decent level, then try the [ABC][] instead.
+
+### NOTE ###
+
+This article is not targeting _Joe Public_, it is instead attacking the way that the newspaper has portrayed him.
+
+  [article]: http://www.news.com.au/business/the-best-places-to-look-for-work-in-2012/story-e6frfm1i-1226255099978 "The best places to look for work in 2012"
+  [ABC]: http://www.abc.net.au/news/ "ABC News"

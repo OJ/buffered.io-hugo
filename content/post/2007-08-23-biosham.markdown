@@ -1,0 +1,43 @@
+---
+categories:
+- Being in the Industry
+- Digital Rights
+- Games
+- Privacy
+- Security
+- WTF
+comments: true
+date: 2007-08-23T00:00:00Z
+title: Biosham &#8482;
+---
+
+I can fully understand the desire a developer has to protect their creation from being copied illegally. I can understand why some steps would be taken to mitigate the risk of losing money due to piracy. What I can't understand is why some companies go <em>so far</em> with their anti-piracy measures that it starts to have an impact on the honourable, paying customers.
+
+I have <a href="/posts/microsoft-vista-licence-restrictions/" title="Microsoft Vista License Restrictions">bitched</a> in the <a href="/posts/office-registration-and-activation/" title="Office Registratoin and Activation">past</a> about how activation is a pain in the neck. But that example is nothing like what <a href="http://www.2kgames.com/" title="2K Games">2K Games</a> have recently inflicted on the buyers of their latest creation, <a href="http://www.2kgames.com/bioshock/" title="Bioshock">Bioshock</a>. Rather than throw a few links to a bzillion blog and forum posts that have covered it already, let me just give you the short version:
+<ol><li>Bioshock comes with <a href="http://www.securom.com/" title="SecuROM">SecuROM</a>.</li><li>It requires online activation before it can be played.</li><li>It can only be activated <strong>twice</strong>.</li></ol>On the surface this might not sound so bad, but when you think about it a little deeper it becomes obvious why this is such a pain in the arse.
+
+<!--more-->
+
+SecuROM has a bit of a reputation amongst gamers, and not a good one at that. Most people who fork out the dollar to purchase a game don't want to be harassed afterwards. SecureROM does a good job of exactly that - harasssing. It usually requires you to insert the CD/DVD of the title while you play it. Again, this isn't a biggie for most people. But for a lot of gamers, changing CDs and DVDs constantly is annoying. I'd go as far as to say that it shits them up the wall! (yup, that one's for you, Vorlath, if you're reading ;) ). If you buy the game legally, and you install the game legally, you should be allowed to play it legally without having to muck around with the discs.
+
+Activation of games is fairly commonplace these days, but I don't think that's a good enough reason to enforce it on the buyer. In the case of Bioshock, the SecuROM activation does some sort of hashing of your hardware and operating system information before passing it to the Mothership for archiving. If you install it on another machine, the process happens again. Each time your hardware or operating system changes, you end up with a new "fingerprint". According to 2K Games, you're allowed two of these "fingerprints" against a given serial number and that's it. Do you think that's reasonable?
+
+Before giving your answer, make sure you consider all the possible scenarios that might result in the need for reinstallation. Such as ...<ul><li>... Windows biting the dust due to malware.</li><li>... hardware biting the dust for any reason.</li><li>... the need to put the game on a different machine which has higher specifications and hence can provide a more enjoyable gaming experience.</li><li>... the game refusing to run on a certain version of Windows (<em>cough</em> Vista <em>cough</em>).</li></ul>There are probably more reasons as well.
+
+2K Games are saying that it's possible to uninstall the game before reinstalling on another machine and everything will continue to work fine. That's all well and good so long as you <em>can</em> uninstall the game. What happens if your machine is fried? Fat chance of uninstalling a game from a hard disk that burnt to a cinder. Good luck removing software from a machine that's been trashed by some nast virus. If any of the above does happen to you, then you're in for a rough ride convincing the support team to allow you to reinstall past your 2-installation limit.
+
+I'm one of those people who frequently rebuilds their machine. When I do, I don't uninstall every bit of software before wiping and starting again. Usually the disks are repartitioned and the OS is reinstalled. I don't think twice about it. I don't think I'm the only one who would end up suffering because I forgot to uninstall a game that I know I have the original discs for.
+
+Let's consider the long term issues that might arise from a mechansim like this. What happens when 2K decide that they've had enough of supporting Bioshock, and users require help with their activation? Simple: the users are left high and dry.
+
+If you think buying a copy of the game through <a href="http://www.steampowered.com/" title="Steam">Steam</a> is going circumvent this level of protection, think again. Steam not only has its own security in place to prevent piracy, but it also delivers the SecuROM anti-piracy gizmos that you get in the boxed version. So you're not safe.
+
+There are already reports of people in strife due to this stupid level of control. Legal users of the software are unable to play the game because they've been forced to reinstall operating systems, or try on different machines because of the hardware requirements of the game. This is just crap. If you buy the software, it shouldn't come with a stack of crap which prevents you from being able to use whenever and wherever you want.
+
+What makes this worse is that those people who <em>do</em> pirate software do not have to put up with this kind of crap! They download, install and play. That's it. No tales of woe. No activation issues. No concern of not being able to reinstall on a beefier machine. Nothing. The pirate is the winner, not the legal consumer.
+
+I take my hat off to 2K for being monumentally stupid. You've tarnished an arguably amazing game with your stupid anti-piracy antics. You've also managed to piss off half of the game playing population...
+
+.. and that's <em>before</em> we take into account the <a href="http://kotaku.com/gaming/shortscreened/bioshocks-widescreen-pissing-people-off-291697.php" title"Bioshock's Widescreen Pissing People Off">widescreen</a> issue.
+
+<em>Edit: Have a read of <a href="http://forums.steampowered.com/forums/showthread.php?t=589874" title="Steampowered Forums">this</a>, <a href="http://forums.2kgames.com/forums/showthread.php?t=5527" title="2K Forums">this</a> and <a href="http://digg.com/pc_games/More_Bioshock_stupidness_you_can_only_install_the_game_twice_WTF" title="More Bioshock Stupidnesss (Digg)">this</a> if you want to see what other people are saying.</em>

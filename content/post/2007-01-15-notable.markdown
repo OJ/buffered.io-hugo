@@ -1,0 +1,15 @@
+---
+categories:
+- Blogging
+comments: true
+date: 2007-01-15T00:00:00Z
+title: Notable
+---
+
+I've had a few questions from people asking me why there's a stack of <em>queer</em> looking icons appearing at the bottom of the blog posts, so I thought I'd post the details so that everyone knows.
+
+The icons appear because of a plugin I recently installed called <a href="http://www.calevans.com/view.php/page/notable" title="Notable Wordpress Plugin">Notable</a>.  Notable is a plugin that generates links that allow for easy addition of links to various social bookmarking and networking sites.  Here's a bit of a snippet from the web page:<blockquote>Notable displays a series of icons below each post allowing your readers to easily submit you to many different social bookmarking and networking sites.
+
+This allows your users to easily submit your blog posts to these sites and increases your blog's visibility.</blockquote>So it's there to help you add my blog links to a stack of different pages should you feel the need to. Like what I said and want to bookmark it on a site like <a href="http://del.icio.us/" title="del.icio.us">del.icio.us</a>? Click that link and away it goes.  The icons that are listed are for a variety of possibly bookmarking and networking sites, and are there to try and accommodate whatever site you happen to like to use.
+
+If you aren't into that kind of thing, then just ignore them :)

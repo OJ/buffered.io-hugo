@@ -1,0 +1,16 @@
+---
+categories:
+- Blogging
+- Miscellaneous
+comments: true
+date: 2007-01-28T00:00:00Z
+title: A New Look
+---
+
+I was getting sick of the way the site was looking, so I changed it. I know I'll end up changing it again because I'll no doubt get sick of looking at the site layout as well, but for now I'm quite happy with it. It's a hacked version of a theme that I thought was nice, but I felt it needed some modifications. I'm not 100% finished yet, as I think the top of the page just looks bare. I'd like to stick an image in there, but my experiments so far have sucked so I think I'll take time out to think of how I can make it work.
+
+So, a new coat of paint has been applied.  Next, I need to finish some of the 50+ draft posts I have started and get some more discussions happening. I have quite an interesting one coming up about software users, so watch this space.
+
+Let me know what you think of the look (if you can be arsed!).
+
+<strong>EDIT:</strong> The picture at the top of the page is another one of my home town - Brisbane :)

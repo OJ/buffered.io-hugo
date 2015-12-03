@@ -1,0 +1,16 @@
+---
+categories:
+- Digital Rights
+- Hardware
+comments: true
+date: 2006-12-23T00:00:00Z
+title: Is it Becoming Illegal to do Anything?
+---
+
+I can't help but feel that over time the world is getting harder to live in. To be a bit more precise, it's becoming very difficult to do anything at all for fear of putting yourself in the firing line, or on the receiving end of a law suit.  Two things that have caught my attention over the last couple of weeks which have really annoyed me. One of them is down to the frustration I feel when people are trying to get something for nothing, and the other is down to annoyance at regulations that are put in place which are just totally ridiculous
+
+The first thing was the news that there's a <a href="http://games.slashdot.org/article.pl?sid=06/12/19/1731210" title="Slashdot | Wiimote Straps Result in Class Action Suit">class action lawsuit against Nintendo</a> due to the apparently insufficient quality of the straps that hold the Wiimote on the wrist. After I first read this I decided to do a bit of research into the cases where people had lost their grip, snapped the band and witnessed the Wiimote flying through the end and breaking either something expensive, or someone's face (or both!). In <em>every</em> case, the person's actions have been incredibly excessive. Sure, the Wiimote no doubt gets you going. It's easy to get caught up in the moment and let excitement get the better of you. But to swing that controller that hard while expecting it to stay in your hand makes you (the user) a complete tool. Instead of just easing up a little bit and admitting that they've gone over the top, the users are now saying that it's Nintendos fault, and in the classic American tradition, they're suing.
+
+The second thing that's got to me is the new Aussie rule that states that you're no longer allowed to <a href="http://www.theinquirer.net/default.aspx?article=36473" title="Illegal to Link">link to copyrighted material</a>. I'm not sure how broad that rule actually is, but it does sound like you could end up with someone suing you for linking to their blog post, their home-made video, or whatever it is that they've put online - even if you've helped increase the traffic to the site. I'd have sent you a link to the original SMH article, but I wasn't sure if that was legal. Let's be honest, if the rule is that broad and you can't even point people at a newspaper article, the world is going nuts. The original idea of hypertext linking is now being threatened - as you're no longer allowed to use them! Sure, link to pages in your own site, link to Google, and tell them what to search for. That should be ok. But direct linking looks to be a no-no.
+
+Total and utter crap. The world is going nuts! If we keep going at this rate it's going to become illegal to do anything other than read emails - and considering the amount of SPAM that's buzzing around the Internet the value of that doesn't look too good. We're going to have to nip this shit in the bud before it goes too far. Not only will it stop the open communication and information sharing mechanism that the world is, but the threat of being sued will prevent people from innovating - that's not the kind of world I want to live in.

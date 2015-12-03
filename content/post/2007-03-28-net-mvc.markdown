@@ -1,0 +1,18 @@
+---
+categories:
+- ASP.NET
+- Ruby on Rails
+comments: true
+date: 2007-03-28T00:00:00Z
+title: .NET MVC
+---
+
+Isn't it amazing how life can just hit turbo without prior warning, and your time seems to just disappear!  I need to find some way of sticking blogging back into my routine :)
+
+For the last couple of weeks I've been playing around a fair bit with <a href="http://www.ruby-lang.org/" title="Ruby">Ruby</a> and <a href="http://www.rubyonrails.org/" title="Ruby on Rails">Rails</a>.  I've been having a great deal of fun at the same time, and I recommend it to any of you who are thinking of taking up some of your own time with learning web development.  It's really good fun, it's interesting, and it's a great platform for building web apps on.  Sure it has its pitfalls (as do all web development options), but it's a worthy contender and it's only going to get better.  More on that in another post ;)
+
+The reason I mentioned it is because of the news that ASP.NET has an <a href="http://codebetter.com/blogs/jeffrey.palermo/archive/posts/Big-News-_2D00_-MVC-framework-for-ASP.NET-in-the-works-_2D00_-level-300.aspx">MVC framework in the works</a>, which looks like it's going to be very similar to the way Rails works.  I think this is a good thing as it'll force people to move away from an (possibly) unnecessary <a href="http://msdn.microsoft.com/msdnmag/issues/06/08/DesignPatterns/default.aspx" title="MVP">MVP</a> approach (for most things) and work with a well-structured <a href="http://en.wikipedia.org/wiki/Model-view-controller" title="MVC">MVC</a> (which a surprising amount of developers don't yet know about!).
+
+No doubt this is another effort by Microsoft to rip off some code from <a href="http://www.castleproject.org/monorail/index.html" title="MonoRail">another established project</a> and claim it as their own, but still if it works and works well, then I'm not really complaining.
+
+Anyway, what do you guys think? Is this a good or a bad thing?

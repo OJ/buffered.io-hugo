@@ -1,0 +1,433 @@
+---
+categories:
+- Productivity
+- Software Development
+comments: true
+date: 2012-01-31T00:00:00Z
+title: My Tools List - 2012
+---
+
+The topic of tools is often a hot one amongst developers and every year
+we see an influx of blog posts where people rant and rave about which
+ones they love the most, and why.
+
+Far be it from me to stay out of such a discussion!
+
+Here is a list of the tools that I use as of the end of January 2012. Some are simply noteworthy.
+Others are very handy and while I would get by without them they would
+be missed. Some of these **I simply cannot live without**. I'm not going
+to bother with ratings. I won't go into frameworks or the like which
+make their way into my code, instead I am focussing on those tools which
+help me do the coding and which aid me in my general computer usage.
+
+Some of these tools are platform-specific, but many can be used across
+different platforms.
+
+<!--more-->
+
+VIM
+---
+
+Author: [Bram Moolenaar](http://www.moolenaar.net/) --
+Homepage: [http://www.vim.org/](http://www.vim.org/)
+
+Yes I'm getting the religious war out of the way immediately.
+
+Without a doubt, your editor is the most important tool in your toolbox.
+If you haven't yet mastered your own editor you are seriously doing
+yourself a disservice. For me, VIM is by far the best editor I have ever
+used. Why? Well...
+
+When it comes to coding I spend most of my _editing_ code rather than
+writing it. That could be because I'm a terrible code, it could be
+that coding is mostly editing with a bit of straight, rawhide
+development along the way. As a result I find that the most common
+things that I do when coding are:
+
+* Moving around the source files.
+* Searching for text.
+* Repeating edits that are the same or similar.
+* As much as I hate to say it, cutting and pasting (think "moving code
+  around" rather than "duplicating code").
+* Performing edits of a very specific coding nature. Examples are
+  replacing a function's argument list, deleting the content of
+  a function, renaming, refactoring, etc.
+
+I think that many other developers will have similar experiences.
+
+The first question I get when I start to explain my position is:
+_"So why is it that you prefer to use VIM for this when there are so
+many tools out there that can help you do all of the above?"_ More often
+that not this comes from the .NET developers I know. These guys know
+that I spend most of my time (at least at the moment) writing .NET
+applications. As a result, I spend a lot of time in [Visual Studio][].
+
+So if I have Visual Studio handy I also have a plethora of plug-ins, such
+as [ReSharper][], which can help with refactoring, moving code around,
+etc. Why not use them? The answer is pretty simple: I don't want to tie
+myself to a tool (or set of tools) that is tied to one language or
+platform.
+
+I love to code in other languages such as [Erlang][], [Haskell][] and [F#][]. I have
+no choice but to write [Javascript][] but I also use [Coffeescript][]
+and have played with the likes of [Lisp][] and [Clojure][]. I use these
+languages on [three][Windows] [different][Linux] [platforms][MacOSX].
+
+I want the same editing experience, the same shortcuts, the same layout
+and the same colour scheme regardless of language or platform. Visual
+Studio can not give me that (nor will it down the track).
+
+As well as this, the likes of Visual Studio and ReSharper tend to cost
+a fair bit of cash. VIM does not, it's free.
+
+I could have chosen one of a number of editors -- including [Emacs][],
+[Notepad++][], [TextMate][], [SublimeText][] and more -- but after
+experimenting with each and every one, VIM was a standout performer
+thanks to...
+
+**Command mode** - having the ability to _remain in command mode_ without
+the need to hold a modifier key (such as CTRL) is brilliant. It feels
+much friendlier on the hands and does a great job of reducing strain and
+the likelihood of RSI. You can do way more with fewer keystrokes and
+often you don't even have to move your fingers from the home row.
+
+A common argument against VIM is the learning curve. Yes, it might
+initially feel very odd and you will no doubt feel _less_ productive
+when you first start using it. After a surprisingly short period of
+time, you will start to see the benefits and you'll wonder why you
+haven't invested the time to learn this earlier.
+
+VIM is also incredibly extensible. There are a ridiculous number of
+[plug-ins and scripts][VimPlugins] available which do all kinds of crazy
+things. There are syntax-highlighters for almost any language you can
+think of, way too many to list here in full. I would like to mention
+a few stand-outs. They are [Pathogen][], [EasyMotion][], [NERDTree][],
+[CommandT][], [BufferGator][], [Fugitive][], [SuperTab][], [Surround][],
+[SnipMate][], [Yankring][] and [Repeat][].
+
+I've also recently found out about the [Janus][] setup (thanks [Dan][]) which provides
+many of these plug-ins out of the box in a handy-to-use script. It
+doesn't work too well on windows, and there's a bit of effort to get it
+to work, but it's worth it. It even brings to the table many of the
+plug-ins that I have listed above without the need to go and install them
+separately.
+
+To be frank, anyone who is serious about writing code should be using an
+editor like this. If not VIM, then look at [Emacs][], [TextMate][] or
+[SublimeText][] as they are great contenders. But if you can stick at it
+long enough, I think you'll find the rewards of using VIM are much
+better than you would otherwise believe.
+
+There, I've said my piece. Time to move on!
+
+ViEmu
+-----
+
+Author: [Jon Beltran de Heredia](http://jonbho.net/) --
+Homepage: [http://www.viemu.com/](http://www.viemu.com/)
+
+Wait a minute, didn't we just finish the VIM section? Yes we did, but
+this tool, while related, is worth a mention by itself. ViEmu is
+a plug-in for Visual Studio that makes the editor behave _like_ VIM.
+Unfortunately, due to a few reasons including the constraints put in
+place by Visual Studio, it isn't a complete implementation of VIM.
+Despite this, it's well worth paying for. I couldn't possibly go back to
+using Visual Studio without it.
+
+There is an alternative, [VsVim][], which is free but it doesn't have
+the command coverage that ViEmu does, nor does it perform as well in
+many cases. It's enough to get you going, but if you're serious about
+your VIMming in Visual Studio then get yourself a copy of ViEmu.
+
+UnxUtils
+--------
+
+Author: Not sure! --
+Homepage: [http://sourceforge.net/projects/unxutils/](http://sourceforge.net/projects/unxutils/)
+
+UnxUtils is just a set of Win32 ports of the GNU tools. I can't do
+without
+the likes of [sed][], [grep][], [awk][], [which][] etc from the command
+line, nor can I bear using the likes of `dir` instead of `ls`. While
+Windows does come with a subset of these (often with different names)
+they aren't as easy to use nor do they have the coverage that you get
+with the tools that come with \*nix distributions.
+
+On a new system I always download these and put them in my `%PATH%`.
+Very handy!
+
+Mercurial
+---------
+
+Author: [Matt Mackall](http://mercurial.selenic.com/wiki/mpm) and others --
+Homepage: [http://hg-scm.org/](http://hg-scm.org/)
+
+This was the first [DVCS][] that I was exposed to and I still love it.
+It's a fantastic version control system and one that I often use for my
+own projects. Mercurial is one of those tools that many people use,
+particularly in the Open Source community.
+
+I'd recommend downloading and install the command-line client and
+nothing more. The GUI tools are "nice", but they're slow, and nowhere
+near as easy to use as the CLI. Get used to the CLI and you'll be amazed
+and how fast you can get things done.
+
+If you use Open Source tools, you'll find that this is an absolute must
+along with ...
+
+Git
+---
+
+Author: [Linus Torvalds](http://torvalds-family.blogspot.com) and others --
+Homepage: [http://git-scm.org/](http://git-scm.org/)
+
+As a long-term Mercurial user I found myself wondering why I would
+bother using Git. Over time it became clear to me that learning it was
+important. It has fast become the de-facto DVCS and I think this is
+largely because of [Github][].
+
+Git's command-line is a bit esoteric but incredibly powerful.
+Mercurial's is probably a bit more intuitive to use and easier to
+digest, particularly if you're used to using [Subversion][]. To show
+a crass example of how one can perceive the difference between the two,
+here's an example (made up) of how you may make a cappuccino:
+
+    # with git
+    git drink --hot --infusion=coffee-beans --with-grind --milk=frothed --no-sugar
+    
+    # with hg
+    hg cappuccino
+
+I hope you get the point. Git is really powerful and super-configurable.
+Mercurial is intuitive and easily covers most common use-cases with
+commands that make sense.
+
+Git's branching model is a bit different to that of Mercurial, and I have to
+admit that I prefer it. Git is now my DVCS of choice, though this
+wouldn't have been the case in the early days thanks to the woeful
+Windows support.
+
+Git, like Mercurial, is so common amongst Open Source enthusiasts that
+you really don't have a choice but to install it. It's certainly worth
+having and using. If you're building any application, even if it's
+a small home project, you should be using a DVCS like Git.
+
+Rebar
+-----
+
+Author: [Dave Smith](http://twitter.com/dizzyco) from [Basho][] --
+Homepage: [https://github.com/basho/rebar](https://github.com/basho/rebar)
+
+This is by far the best tool in my [Erlang][] box. It's a fast Erlang
+build tool with some great options, such as file generation from
+templates, running of unit tests and management of dependencies. It's
+Open Source too!
+
+Get it. Use it.
+
+Dropbox
+-------
+
+Homepage: [http://www.dropbox.com/](http://www.dropbox.com/)
+
+I think this is another really common developer tool, but can easily be
+used by people who aren't developers. For me, this tool has its worth in
+the ease in which files just magically appear on all the machines which
+you use. I don't think I'm too different from other developers in that
+I have quite a few machines around the house that I use frequently. I am
+also on-site with clients and often want access to certain things that
+I don't want to share out on the open web with the rest of the world.
+Dropbox is awesome for this.
+
+I recently discovered another contender called [InSync][] which uses
+[Google Docs][] as a backing store, but for me it doesn't quite have the
+appeal of Dropbox.
+
+Cross platform. Quick. Easy. Free for 2GB of space. Very cool.
+
+WinRAR
+------
+
+Homepage: [http://www.rarlab.com/](http://www.rarlab.com/)
+
+Yes, that's right, I paid for WinRAR and I love it. It's still my
+archiver of choice after many years of use. It's easy, has great
+integration with the Windows shell, and RAR compression is really quite
+good.
+
+Yes, there are other options out there now that are free and handle all
+kinds of compression algorithms -- [7zip][] is the first that comes to
+mind -- but I find that I like the way I can interact with WinRAR both
+graphically and via the command-line. I have no reason nor desire to
+move away from WinRAR. I highly recommend it.
+
+Diffmerge
+---------
+
+Author: [Sourcegear](http://www.sourcegear.com/) --
+Homepage: [http://www.sourcegear.com/diffmerge/index.html](http://www.sourcegear.com/diffmerge/index.html)
+
+This is a free-to-use diff and merge tool. It works on Windows, Mac and
+Linux and does a fantastic job of understanding the differences in
+files. It's hard to believe that a tool this good can be free.
+
+Many people continue to pay for and use [BeyondCompare][] but I can't
+see any reason to move away from Diffmerge. If you're looking for
+a great tool to help understand the changes in your code-base, look no
+further!
+
+Alfred
+------
+
+Homepage: [http://www.alfredapp.com/](http://www.alfredapp.com/)
+
+Alfred is a simple productivity tool for Mac OSX. It's a combined
+application launcher, file finder, application automation tool and web
+integrator. Think [Launchy][] on steroids and add a nicer UI.
+
+It's free and it's really good. You can also pay for a [Powerpack][] that
+gives you even more functionality for the tidy sub of just &pound;15.
+
+ttytter
+-------
+
+Author: [Cameron Kaiser](http://www.floodgap.com/) --
+Homepage: [http://www.floodgap.com/software/ttytter/](http://www.floodgap.com/software/ttytter/)
+
+No it's not a development tool, but my life of coding is influenced by
+those who I speak to on Twitter, and hence the tools that I use to
+interact with it are worth a mention.
+
+This is another great tool for the command-line monkeys. ttytter is a fully
+functional Twitter client that runs in the console. It supports hashtag
+searches, @mentions, direct messages with full colour-coding. It's
+really easy to use and a greatly way to keep the noise down in your
+Twitter feed. You can even filter out crap that you don't want to see.
+
+It's a great tool (written in [Perl][]!), but doesn't work in Windows.
+
+KeePassX
+--------
+
+Author: [KeePassX team](http://sourceforge.net/project/memberlist.php?group_id=166631) --
+Homepage: [http://www.keepassx.org/](http://www.keepassx.org/)
+
+Hands up if you have thousands of accounts across the Internet. Keep you
+hands up if you often (or always) use the same password for all of those
+things.
+
+If you still have you hand up, you need a slap. Password management is
+actually quite a serious issue. Using the same password on many accounts
+can open to you up to all kinds of attacks from the naughty people. All
+it takes it for one of your accounts to be compromised and your password
+extracted. The rest of your accounts are now owned.
+
+There is no guarantee that the site you're signing up for uses the likes
+of [SSL][] or behind the scenes is doing a good job of managing your
+password. To protect yourself you should instead generate large
+passwords, ones that you don't have a hope of remembering, ones that
+attackers will need quantum computers to crack. Also, having different
+passwords to each of your accounts means that if one is compromised the
+rest of them are still safe.
+
+I use KeePassX to generate and manage these passwords. I secure my
+password file with a brutally long password that I have no problems remembering.
+This file is synced across my machines using
+Dropbox so that I have access to my passwords wherever and whenever I need it.
+
+It's a great utility and serves me really well. Get serious about your
+password management and use something like KeePassX to help you do it.
+
+Octopress
+---------
+
+Author: [Brandon Mathis](http://brandonmathis.com/) --
+Homepage: [http://octopress.org/](http://octopress.org/)
+
+This is what I use to write and publish my [blog][].
+Previous I had used [Wordpress][] and had moved on to [Blogofile][] at
+some point last year.
+
+What I had realised was that my workflow for blogging wasn't really one
+that fit with the likes of the mainstream tools like Wordpress. The
+editing experience was painful, amongst other things. I came to realise
+that a blog is in fact a static site with a few comments. Thanks to
+[Disqus][] the comment problem has been outsourced, so really the only
+content I had was static. This is a good thing as handling static sites
+is not only easier, but it means the server does less work and is less
+likely to be attackable.
+
+I moved over to Octopress over the holiday period of 2011/2012 and so
+far I love it. I write all my posts in [Markdown][], I push changes to
+a [Github][] repository and I publish a new version of my site with
+a single command. It's a joy.
+
+Octopress makes this all really easy and has built-in support for
+themes, Github Pages and has a bunch of plug-ins that give you a great
+looking and highly functional site out of the box.
+
+I highly recommend it.
+
+That's all!
+===========
+
+Look at this list it's clear that I don't really rely on much. That
+which I do rely on is often free or relatively low-cost. These tools are
+what make me feel really productive and comfortable in front of the
+machine. I hope that this has in some way inspired you to try a few new
+things out, or at least write your own mini-list to praise that which
+makes you the developer you are.
+
+Bring on the comments, suggestions and flames.
+
+[7zip]: http://www.7-zip.org/
+[Basho]: http://www.basho.com/
+[BeyondCompare]: http://www.scootersoftware.com/
+[Blogofile]: http://www.blogofile.com/
+[BufferGator]: http://www.vim.org/scripts/script.php?script_id=3619
+[Clojure]: http://clojure.org/
+[Coffeescript]: http://coffeescript.org/
+[CommandT]: https://wincent.com/products/command-t
+[Dan]: http://www.shiftperception.com/
+[Disqus]: http://www.disqus.com/
+[EasyMotion]: https://github.com/Lokaltog/vim-easymotion
+[Emacs]: http://www.gnu.org/s/emacs
+[Erlang]: http://www.erlang.org/
+[F#]: http://research.microsoft.com/fsharp
+[Fugitive]: https://github.com/tpope/vim-fugitive
+[Github]: https://github.com/
+[Google Docs]: http://docs.google.com/
+[Haskell]: http://www.haskell.org/
+[InSync]: https://www.insynchq.com/
+[Janus]: https://github.com/carlhuda/janus
+[Javascript]: http://en.wikipedia.org/wiki/JavaScript
+[Launchy]: http://www.launchy.net/
+[Linux]: http://kernel.org/
+[Lisp]: http://en.wikipedia.org/wiki/Lisp_(programming_language)
+[MacOSX]: http://www.apple.com/macosx/
+[Markdown]: http://daringfireball.net/projects/markdown/
+[NERDTree]: https://github.com/scrooloose/nerdtree
+[Notepad++]: http://notepad-plus-plus.org/
+[Pathogen]: https://github.com/tpope/pathogen
+[Perl]: http://www.perl.org/
+[Powerpack]: http://www.alfredapp.com/powerpack/
+[ReSharper]: http://www.jetbrains.com/rsharper
+[Repeat]: https://github.com/tpope/vim-repeat
+[SSL]: http://en.wikipedia.org/wiki/Secure_Sockets_Layer
+[SnipMate]: https://github.com/msanders/snipmate.vim
+[SublimeText]: http://www.sublimetext.com/
+[Subversion]: http://subversion.tigris.org/
+[SuperTab]: https://github.com/ervandew/supertab
+[Surround]: https://github.com/tpope/vim-surround
+[TextMate]: http://macromates.com/
+[Visual Studio]: http://www.microsoft.com/visualstudio/
+[VsVim]: http://visualstudiogallery.msdn.microsoft.com/59ca71b3-a4a3-46ca-8fe1-0e90e3f79329
+[Windows]: http://windows.microsoft.com/
+[Wordpress]: http://www.wordpress.com/
+[Yankring]: http://www.vim.org/scripts/script.php?script_id=1234
+[awk]: http://en.wikipedia.org/wiki/AWK
+[blog]: http://buffered.io/
+[grep]: http://en.wikipedia.org/wiki/Grep
+[sed]: http://en.wikipedia.org/wiki/Sed
+[which]: http://en.wikipedia.org/wiki/Which_(Unix)
+[DVCS]: http://en.wikipedia.org/wiki/Distributed_revision_control

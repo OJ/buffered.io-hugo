@@ -1,0 +1,24 @@
+---
+categories:
+- WTF
+comments: true
+date: 2006-11-07T00:00:00Z
+title: WTF?!
+---
+
+I'm a regular reader of <a href="http://www.thedailywtf.com/" title="The Daily WTF">The Daily WTF</a> and most of the time I get a good laugh and think to myself "Boy, I'm glad I'm not working on <em>that</em> system."
+
+Then I get to work and find myself looking at very similar instances of WTFness in the applications I am working on. I think that the level of WTFness in the industry at the moment is sufficiently high enough to make it difficult for a Daily WTF site to cover all the cases. So, while remaining an avid fan and subscriber of the site, I've decided to start posting my own WTFs that I've seen along the way, with obfuscation and code changes to protect the ...er... guilty. This may become a fairly regular posting category for me.
+
+What I will say before posting my first example is that there might be some cases where the WTFness isn't immediately obvious, or the point of the WTF is so small it might be considered "nit-picking". All I can say to that is: if I think it's a WTF I'm going to post it :) Feel free to comment if you feel like it.
+
+So, today I'm going to start with a couple of files that I've stumbled across which contain an <strong>insane</strong> amount of code. Bear in mind that this system contains a <em>lot</em> of files - there are a lot more files that fit into this category.
+
+<img id="image111" src="/uploads/2006/11/wtf.png" alt="File Size WTF" class="InlineImageBlock" />
+
+Yup, that's just <strong>3</strong> files. One of them is the code-behind for a web user control (ascx.cs) which contains a 1.5k line Page_PreRender() function.
+
+WTFness: 8 / 10.
+
+<hr />
+Edit: I just thought I'd let you know that these code files are <strong>not</strong> generated. They've all been hand-coded!

@@ -1,0 +1,89 @@
+baseurl = "buffered.io"
+languageCode = "en-au"
+title = "OJ's Perspective"
+# Enable comments by entering your Disqus shortname
+disqusShortname = "ojsrants"
+# Define the number of posts per site
+paginate = 10
+theme = "hugo-icarus-theme"
+
+[permalinks]
+    post = "/posts/:slug/"
+
+
+[params]
+    # Tell me who you're
+    author = "OJ Reeves"
+    bio = "Security | Dev"
+    location = "Down Under"
+    site_description = "Security and software development"
+    copyright  = "Content  is licensed under the [Creative Commons Attribution-ShareAlike 3.0 Unported License](http://creativecommons.org/licenses/by-sa/3.0/)"
+
+    # Enable Google Analytics by entering your tracking code
+    google_analytics = ""
+
+    # Format dates with Go's time formating
+    date_format = "2006-01-02"
+
+# Create custom menu entries by defining a label and a link for
+# them. Since you can also link posts you've the option the
+# place the links before or after them.
+#
+# E.g.: "Home" appears before all linked posts in the menu
+# and "Tags" / "Categories" after them.
+#[[params.menu]]
+#    before = true
+#    label  = "Home"
+#    link   = "/"
+#
+#[[params.menu]]
+#    before = false
+#    label  = "Categories"
+#    link   = "categories/"
+
+# Enter a link for the follow button on the left
+[params.profile]
+    follow_button = "https://twitter.com/TheColonial"
+
+
+[social]
+# Add your social network accounts to the profile section on the left
+# by entering your username. The links to your account will be
+# create automatically.
+    github          = "oj"
+    bitbucket       = ""
+    jsfiddle        = ""
+    codepen         = ""
+    foursquare      = ""
+    dribbble        = ""
+    deviantart      = ""
+    behance         = ""
+    flickr          = ""
+    instagram       = ""
+    youtube         = ""
+    vimeo           = ""
+    vine            = ""
+    medium          = ""
+    wordpress       = ""
+    tumblr          = ""
+    xing            = ""
+    linkedin        = ""
+    slideshare      = ""
+    stackoverflow   = ""
+    reddit          = ""
+    pinterest       = ""
+    googleplus      = ""
+    facebook        = ""
+    facebook_admin  = ""
+    twitter_domain  = ""
+    twitter         = "TheColonial"
+
+# Enable and disable widgets for the right sidebar
+[params.widgets]
+    recent_articles = true
+    recent_thumbnails = false
+    categories = true
+    tags = false
+    tag_cloud = false
+    mathjax = false
+    chevron_up = false

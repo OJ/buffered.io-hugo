@@ -1,4 +1,4 @@
-baseurl = "buffered.io"
+baseurl = "http://buffered.io/"
 languageCode = "en-au"
 title = "OJ's Perspective"
 # Enable comments by entering your Disqus shortname

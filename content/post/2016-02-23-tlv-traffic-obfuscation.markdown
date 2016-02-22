@@ -10,7 +10,7 @@ title: TLV Traffic Obfuscation
 
 As many of you are already aware, Metasploit and Meterpreter talk to each other using a variety of transports. While the transports may vary from session to session, one thing that doesn't vary is the "protocol" that travels over those transports. This information fits a well-known structure, and is referred to as _TLV Packets_ (Type, Length, Value).
 
-Once a session has been estalbished, the TLV traffic that is sent across the wire contains a bunch of very easily recognisable content, and as such can be detected by Antivirus software, or Intrusion Detection Systems.
+Once a session has been established, the TLV traffic that is sent across the wire contains a bunch of very easily recognisable content, and as such can be detected by Antivirus software, or Intrusion Detection Systems.
 
 Recently, I made a change to the way the packets are formed prior to transmission, and this post is intended to explain the detail of how it works.
 

@@ -30,7 +30,7 @@ To the folks at Rapid7, especially those in the Metasploit team, I love you all 
 
 ## The Powershell Extension
 
-A recent bombshell was dropped in the form of a new extension that allows for direct interaction with a lot-loaded Powershell interpreter. Prior to this extension existing, we were stuck with invoking `powershell.exe` on the command line and passing in scripts. We weren't in a position to interact with it like we were with `cmd.exe` (for example). This was painful, and with so much ... er.. power.. being provided by Powershell, we were finding that more and more people wanted to use it without having to juggle results via `cmd.exe`. There were other issues too:
+A recent bombshell was dropped in the form of a new extension that allows for direct interaction with a hot-loaded Powershell interpreter. Prior to this extension existing, we were stuck with invoking `powershell.exe` on the command line and passing in scripts. We weren't in a position to interact with it like we were with `cmd.exe` (for example). This was painful, and with so much ... er.. power.. being provided by Powershell, we were finding that more and more people wanted to use it without having to juggle results via `cmd.exe`. There were other issues too:
 
 * Single-shot `powershell.exe` invocations didn't give us the ability to have persistent sessions.
 * It wasn't always clear which `powershell.exe` was being invoked.

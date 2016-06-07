@@ -82,11 +82,11 @@ This is starting to get a bit more interesting. The rendering of the drop-down i
 
 I plugged this code into a standard MVC application and this is what it looks like:
 
-{% img /uploads/2012/11/xss-index.png 'Choosing a person' %}
+![Choosing a person](/uploads/2012/11/xss-index.png)
 
 After selecting a person from the drop down it looks like this:
 
-{% img /uploads/2012/11/xss-details.png 'Person details' %}
+![Person details](/uploads/2012/11/xss-details.png)
 
 A bad assumption
 ----------------
@@ -95,7 +95,7 @@ As you already know, ASP.NET MVC has the ability to automatically convert query 
 
 Let's see.
 
-{% img /uploads/2012/11/xss-type-fail.png 'Person details' %}
+![Person details](/uploads/2012/11/xss-type-fail.png)
 
 OK, so MVC will require that this value be an integer, otherwise the action will fail to be invoked. If that's the case, then the view won't be rendered and our code which directly accesses `Request.QueryString` will not be invoked and hence there's no risk.
 
@@ -124,11 +124,11 @@ Why is this bad? Well this means that code outside of controller actions may res
 
 Let's take a look at what might happen if we threw multiple instances via the query string at our dodgy MVC application:
 
-{% img /uploads/2012/11/xss-hpp-invalid.png 'HPP example' %}
+![HPP example](/uploads/2012/11/xss-hpp-invalid.png)
 
 The above screenshot shows both the query string and the page source when we do this. That's right, MVC used the first value, set to `0`, without any issues and invoked the view engine. The view's assumption that the `index` parameter has been sanitised by the controller has now been proven unsafe. Now we can see that we do have access to the source. Let's see what happens if we went a step further and passed in a more sinister value:
 
-{% img /uploads/2012/11/xss-hpp-valid.png 'HPP XSS exploit' %}
+![HPP XSS exploit](/uploads/2012/11/xss-hpp-valid.png)
 
 Pwned.
 

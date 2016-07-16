@@ -1,11 +1,14 @@
 baseurl = "http://buffered.io/"
-languageCode = "en-us"
+languageCode = "en-au"
 title = "OJ's Perspective"
 theme = "hugo-future-imperfect"
 preserveTaxonomyNames = true
 paginate = 10
 disqusShortname = "ojsrants"
 googleAnalytics = ""
+
+[permalinks]
+    post = "/posts/:slug/"
 
 [params]
     # Sets the meta tag description, usually reserved for the main page
@@ -16,7 +19,7 @@ googleAnalytics = ""
     socialAppearAtTop    = true
     socialAppearAtBottom = true
     # set this to the section name if section is not post
-    viewMorePostLink     = "/post/"
+    viewMorePostLink     = "/posts/"
 
 # Optional Params
     categoriesByCount    = true

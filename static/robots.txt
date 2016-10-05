@@ -13,7 +13,7 @@ Disallow:
 User-agent: MSNBot
 Disallow:
 
-User-agent: TwitterBot
+User-agent: Twitterbot
 Disallow:
 
 # Now for everyone else I don't care about.

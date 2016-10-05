@@ -13,6 +13,9 @@ Disallow:
 User-agent: MSNBot
 Disallow:
 
+User-agent: TwitterBot
+Disallow:
+
 # Now for everyone else I don't care about.
 
 # If you run an indexer, you should totally check to make sure 

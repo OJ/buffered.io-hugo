@@ -4,6 +4,9 @@ Sitemap: http://buffered.io/sitemap.xml
 # Unauthorized access to this file is prohibited.
 
 # You guys are cool with me.
+User-agent: Twitterbot
+Disallow:
+
 User-agent: DuckDuckBot
 Disallow:
 
@@ -11,9 +14,6 @@ User-agent: Googlebot
 Disallow:
 
 User-agent: MSNBot
-Disallow:
-
-User-agent: Twitterbot
 Disallow:
 
 # Now for everyone else I don't care about.

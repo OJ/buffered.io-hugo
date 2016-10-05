@@ -52,7 +52,7 @@ As a result of these assumptions, Metasploit also has to assume that the inbound
 
 So the process here is rather involved, but thankfully completely opaque to the user who shouldn't have to care. The important thing is that, at this point, we have a valid Meterpreter session running on the target.
 
-## Stageless payloads.
+## Stageless payloads
 
 Stageless payloads still seem to be relatively unknown by most Metasploit users, partly because they aren't talked about much, partly because of documentation, and partly because they're easily hidden. The staged equivalent of the above staged payload (`windows/meterpreter/reverse_tcp`) is `windows/meterpreter_reverse_tcp`. Note the use of `_` instead of the second `/` in the payload name. The key differences here are:
 

@@ -5,7 +5,7 @@ categories:
 - RCE
 comments: true
 date: 2007-04-09T00:00:00Z
-title: Reversing DirectX &amp; Blowfish
+title: Reversing DirectX & Blowfish
 ---
 
 This tutorial has been on the boil for quite a while.  I got close to nailing the problem late last month, but didn't end up finding the time to finish it until this weekend.  This tutorial is a solution to another Crackme, but this time it's really not for the faint-hearted.  Information on reversing fullscreen [DirectX (Direct3D)][D3D] applications and playing around with [Blowfish][] can be found in this tutorial, and it's a bit of a mind-job - it also weighs in at nearly 40 pages (with some nice pictures thrown in)!

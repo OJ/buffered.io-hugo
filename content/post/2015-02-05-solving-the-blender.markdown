@@ -239,5 +239,5 @@ Until next time!
   [Kiwicon]: https://kiwicon.org/
   [hyprwired]: https://twitter.com/hyprwired
   [CTF]: https://kiwicon.org/the-con/hamiltr0nno-carrier/
-  [download]: /uploads/2015/02/blender/the_blender.exe
+  [download]: /uploads/2015/02/blender/the_blender.zip
   [Thread Information Block]: http://en.wikipedia.org/wiki/Win32_Thread_Information_Block

@@ -11,7 +11,7 @@ Recently I started live-streaming some security-related stuff on [Twitch][] beca
 
 * A quick analysis of a vulnerable 32-bit Linux binary.
 * An explanation of how stack buffer overflows can result in the Saved Return Pointer (SRP) being overwritten.
-* A description of how SRP overwrites lead to control if the EIP register contents.
+* A description of how SRP overwrites lead to control of the EIP register.
 * A demonstration of how this control can lead to execution of shellcode on the stack thanks to the lack of NX.
 * Development of an exploit that abuses the flaw resulting in attacker-controlled code execution.
 

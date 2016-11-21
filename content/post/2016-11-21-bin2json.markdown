@@ -1,0 +1,120 @@
+---
+categories:
+- LiveStream
+- Security
+- CTF
+comments: true
+date: 2016-11-21T13:52:00+10:00
+title: bin2json CTF Challenge
+---
+
+At the beginning of this year I agreed to help a [good friend][Peleus] out and build a challenge for the [BSidesCbr][] 2016 CTF. The aim was to:
+
+* Create a fun binary pwnable.
+* Avoid the typical exploitation paths (eg. stack/heap buffer overflows, format strings, etc).
+* Include a couple of code related issues that are close to my heart.
+* Design it so that multiple issues needed to be abused in order to gain code execution.
+* Have it considered at least an "intermediate" level challenge.
+
+The result: [bin2json][], a pwnable 64-bit Linux binary.
+
+I had another good mate, [JustinSteven][], play0test the binary for me to make sure it was reasonable, usable and pwnable, and after ignoring all the feedback he gave me, I handed it over to [Peleus][].
+
+Unfortunately, nobody managed to crack it during the BSides CTF. I didn't want to just throw it out to the masses immediately, and so I hit up the wonderful CTF crew at [Kiwicon][], headed up by [Hyprwired][], and offered them to chance to include it in this year's Kiwicon CTF. They graciously accepted.
+
+The binary made it through the second CTF un-pwned, though I do think that it was due to lack of sufficient time rather than difficulty. After two CTFs, it's time for [bin2json][] to retire. So, I am opening it up to the Internet (yes, that's you!) so that you can give it a crack. I'd love to see people spend some time and nail it.
+
+For those who don't want to, or who don't yet feel that they're ready for it, you'll be pleased to know that [JustinSteven][] is going to be streaming the process of pwnage [live on his Twitch stream][justin-twitch] on Wednesday 23rd November 2016, at 7:30pm AEST (GMT+10). I highly recommend viewing, he's an entertaining bugger and does a great job of explaining stuff. He's recently got himself a new mic, so his dulcet tones sound all the more saucy.
+
+I have decided, at this point, to not release the [bin2json][] source. For now, you will just get:
+
+* The binary.
+* The readme.
+* A sample script that shows how to interact with it.
+
+That's it. I may share the source later. The rest of this post contains the official readme for the challenge, so have at it!
+
+Peace.
+
+-------------
+
+The Scenario
+============
+
+Back in the days of _quality_ Enterprise software, a company called Totes McPants Pty Ltd had a proprietary solution for tracking various entities within a business or team. This application, Simple Human Instance Tracker, was a market leader until it unfortunately went EOL in 1999.
+
+Stalwart users refused to give up on it. Instead of moving over to a more appropriate solution, they continued using that which was defunct, and over a very long period of time managed to accumulate more data than they ever though possible.
+
+In 2015, one of the application's long-term users and proponents of S.H.I.T. found themselves in a position where they needed to integrate with external RESTful services. Needless to say, there was no REST-compatible interface available and so one had to be built.
+
+This web-scale integration solution was built and deployed to great success, and has been made available as a service at _server:port_. It will happily translate S.H.I.T.'s proprietary data format to (relatively) clean JSON for use externally.
+
+The Format
+==========
+
+S.H.I.T.'s format is actually very simple, and the transition layer extends it slightly by providing a very simple command style interface. Once connected, the system waits for a binary blob to be sent which contains a number of actions. There are two actions:
+
+* `CREATE PERSON` (action value of `0`: This action is intended to create an instance of a person using the S.H.I.T. binary person format.
+* `PRINT` (action value of `1`): This action prints all the "created" people in a nice JSON format.
+
+Action values are a single-byte in length.
+
+CREATE PERSON
+-------------
+
+There are 3 types of person available:
+
+1. `ENGINEER` (type value of `1`) - This person type has a single value that represents how humourous the person is (as we all know, engineers have a great sense of humour). This value is an integer value 4 bytes in length. A sample byte sequence may look like:
+    * `[0x01]["Uncle Bob" (padded to 512 chars)][0xFF,0x00,0x00,0x00]`
+1. `HACKER` (type value of `0`) - This is an extension of the `ENGINEER` but has an extra field called `Handle` at the end which is `256` characters long. 
+    * `[0x00]["Rob Fuller" (padded to 512 chars)][0xFF,0xAB,0x00,0x00]["Mubix" (padded to 256 chars)]`
+1. MANAGER (type value of `2`) - This is a person with a single extra 4-byte integer value that represents how much of an asshole the manager is.
+    * `[0x02]["Larry Ellison" (padded to 512 chars)][0x7F,0xFF,0xFF,0xFF]`
+
+To create a person, each of these byte streams must be prefixed with 2 other bytes that represent:
+
+1. The `CREATE PERSON` action (`0x00`).
+1. A flag that indicates whether the entry should be added to the head (`0x01`) or tail (`0x00`) of the internal list.
+
+Therefore to create a manager at the head of the list, the following byte stream is used:
+```
+[0x00][0x01][0x02]["Larry Ellison" (padded to 512 chars)][0x7F,0xFF,0xFF,0xFF]
+```
+And this constitutes a single `CREATE PERSON` action.
+
+PRINT
+-----
+
+Printing is very simple, it is a single byte action represented by the value `0x01`.
+
+Payloads
+========
+
+Once connected to the integration service, the client sends a series of translation payloads. Each payload contains a 4-byte size header, followed by the payload length. Each payload comes in the form of an action. A typical payload looks like the following:
+```
+[4-byte length][[create person 0][create person 1]...[create person N][print]]
+```
+
+See the attached `sample.py` file which shows the application in action.
+
+Notes
+=====
+
+The system assumes that every team and business has at least one Hacker. If no hacker is present in the list, printing won't do much!
+
+Goal
+====
+
+Shell the target, get the flag from the file system. ASLR is not enabled.
+
+-----------------
+
+
+  [bin2json]: /uploads/2016/11/bin2json-bin.tar.gz
+  [JustinSteven]: https://twitter.com/justinsteven
+  [Peleus]: https://twitter.com/0x42424242
+  [BSidesCbr]: http://www.bsidesau.com.au/
+  [justin-twitch]: https://www.twitch.tv/thejustinsteven
+  [Hyprwired]: https://twitter.com/hyprwired
+  [Kiwicon]: https://kiwicon.org/
+

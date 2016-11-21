@@ -18,13 +18,13 @@ At the beginning of this year I agreed to help a [good friend][Peleus] out and b
 
 The result: [bin2json][], a pwnable 64-bit Linux binary.
 
-I had another good mate, [JustinSteven][], play0test the binary for me to make sure it was reasonable, usable and pwnable, and after ignoring all the feedback he gave me, I handed it over to [Peleus][].
+I had another good mate, [Justin Steven][], play-test the binary for me to make sure it was reasonable, usable and pwnable, and after ignoring all the feedback he gave me, I handed it over to [Peleus][].
 
 Unfortunately, nobody managed to crack it during the BSides CTF. I didn't want to just throw it out to the masses immediately, and so I hit up the wonderful CTF crew at [Kiwicon][], headed up by [Hyprwired][], and offered them to chance to include it in this year's Kiwicon CTF. They graciously accepted.
 
 The binary made it through the second CTF un-pwned, though I do think that it was due to lack of sufficient time rather than difficulty. After two CTFs, it's time for [bin2json][] to retire. So, I am opening it up to the Internet (yes, that's you!) so that you can give it a crack. I'd love to see people spend some time and nail it.
 
-For those who don't want to, or who don't yet feel that they're ready for it, you'll be pleased to know that [JustinSteven][] is going to be streaming the process of pwnage [live on his Twitch stream][justin-twitch] on Wednesday 23rd November 2016, at 7:30pm AEST (GMT+10). I highly recommend viewing, he's an entertaining bugger and does a great job of explaining stuff. He's recently got himself a new mic, so his dulcet tones sound all the more saucy.
+For those who don't want to, or who don't yet feel that they're ready for it, you'll be pleased to know that [Justin Steven][] is going to be streaming the process of pwnage [live on his Twitch stream][justin-twitch] on Wednesday 23rd November 2016, at 7:30pm AEST (GMT+10). I highly recommend viewing, he's an entertaining bugger and does a great job of explaining stuff. He's recently got himself a new mic, so his dulcet tones sound all the more saucy.
 
 I have decided, at this point, to not release the [bin2json][] source. For now, you will just get:
 
@@ -111,7 +111,7 @@ Shell the target, get the flag from the file system. ASLR is not enabled.
 
 
   [bin2json]: /uploads/2016/11/bin2json-bin.tar.gz
-  [JustinSteven]: https://twitter.com/justinsteven
+  [Justin Steven]: https://twitter.com/justinsteven
   [Peleus]: https://twitter.com/0x42424242
   [BSidesCbr]: http://www.bsidesau.com.au/
   [justin-twitch]: https://www.twitch.tv/thejustinsteven

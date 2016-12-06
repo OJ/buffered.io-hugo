@@ -86,6 +86,11 @@ googleAnalytics = ""
     weight = 3
 
 [[menu.main]]
+    name = "Streaming"
+    url = "/streaming"
+    weight = 3
+
+[[menu.main]]
     name = "About"
     url = "/about"
     weight = 3

@@ -17,10 +17,10 @@ Hopefully you get a kick out of watching. Thanks for supporting the idea.
 
 ## Links
 
-* Live streams appear on my [Twitch.tv channel](https://www.twitch.tv/th3colon1al).
+* Live streams appear on my [Twitch.tv channel](https://www.twitch.tv/ojreeves).
 * All the videos that are streamed are archived on my [YouTube channel](https://youtube.com/c/OJReeves).
 * I'm archiving the binaries and exploits in a [Github repository](https://github.com/OJ/streams).
-* My partner in crime, [JustinSteven](https://twitter.com/justinsteven) also streams on [his Twitch.tv channel](https://www.twitch.tv/thejustinsteven), and is well worth watching.
+* My partner in crime, [JustinSteven](https://twitter.com/justinsteven) also streams on [his Twitch.tv channel](https://www.twitch.tv/justinsteven), and is well worth watching.
 * I use VIM, a lot. The configuration I'm using can be [found on Github](https://github.com/OJ/vim-config-linux).
 * My GDB is set up to make use of [gdb-peda](https://github.com/longld/peda).
 * While reverse engineering, I make use of [Binary Ninja](https://binary.ninja/) and [IDA Pro](https://www.hex-rays.com/products/ida/).

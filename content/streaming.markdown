@@ -46,12 +46,10 @@ I like to play [Gai Barone](https://soundcloud.com/gai-barone) via SoundCloud wh
 
 ## Donations
 
-I have had a few people ask how they can donate, and the answer to that right now is: you can't.
+If you're interested in supporting my efforts to explore and teach, you can do so via the following:
 
-The aim is to help people learn, and to have a bit of fun on a regular basis doing it. I may consider it later if I get enough pressure, but it would feel strange even if the donations were voluntary.
+* Sign up as a [Patreon](https://www.patreon.com/OJReeves)
+* Fire off a one off donation via [Ko-Fi](https://ko-fi.com/ojreeves)
+* Throw funny money at me via [1upcoin](https://1upcoin.com/donate/ojreeves)
 
-## Schedule
-
-The following is a calendar of future streams, maintained by me and [JustinSteven](https://www.twitch.tv/thejustinsteven):
-
-<iframe src="https://calendar.google.com/calendar/embed?showPrint=0&amp;showTabs=0&amp;showCalendars=0&amp;height=600&amp;wkst=1&amp;bgcolor=%23FFFFFF&amp;src=buffered.io_qomcimit9306arj4gce712e5qs%40group.calendar.google.com&amp;color=%23853104&amp;ctz=Australia%2FBrisbane" style="border-width:0" width="800" height="600" frameborder="0" scrolling="no"></iframe>
+Thanks!

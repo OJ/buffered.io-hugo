@@ -8,6 +8,12 @@ date: 2014-03-01T01:26:33Z
 title: IDSECCONF 2013 myftpd challenge
 ---
 
+## Update 2018-09-13
+
+Lots of people have asked for a copy of the binary so that they can play along with this. I've contacted [Ammar](https://twitter.com/y3dips) and he has said it's ok for me to provide it here. So for those that are keen to have a go at this themselves, [have at it!](/uploads/2014/03/myftpd.exe).
+
+## On with the Show
+
 With [OSCE][] out of the way and the family in need of a break from me doing study and certifications, I decided to turn my hand to some fun exploit challenges to keep up the practice. To a wannabe bug exploiter such as myself, there are plenty of options out there which are great for fun and practice. Some of those options are:
 
 * Downloading an application with a known vulnerability and exploit and practising on that.

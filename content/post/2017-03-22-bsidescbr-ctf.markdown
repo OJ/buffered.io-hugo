@@ -7,7 +7,7 @@ date: 2017-03-22T11:51:10+10:00
 title: BSidesCBR CTF Round Up
 ---
 
-<img style="float: right; margin-left: 5px; margin-bototm: 5px" src="/uploads/2017/03/bsides/bsides-ctf.png" width="200px"/>
+<img style="float: right; margin-left: 5px; margin-bottom: 5px" src="/uploads/2017/03/bsides/bsides-ctf.png" width="200px"/>
 [BSides Canberra](http://www.bsidesau.com.au/) for 2017 has just finished up! A cracking 2-day conference hosted by a bunch of infosec folks down here in Australia, and everything went as well as it could have. It was great fun, and the vibe there was really awesome.
 
 If you're here for the details on how to get the CTF challenges running locally, jump to the bottom of the post. Keep reading if you want more information on how things went.

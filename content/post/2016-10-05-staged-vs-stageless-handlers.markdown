@@ -54,7 +54,7 @@ So the process here is rather involved, but thankfully completely opaque to the 
 
 ## Stageless payloads
 
-Stageless payloads still seem to be relatively unknown by most Metasploit users, partly because they aren't talked about much, partly because of documentation, and partly because they're easily hidden. The staged equivalent of the above staged payload (`windows/meterpreter/reverse_tcp`) is `windows/meterpreter_reverse_tcp`. Note the use of `_` instead of the second `/` in the payload name. The key differences here are:
+Stageless payloads still seem to be relatively unknown by most Metasploit users, partly because they aren't talked about much, partly because of documentation, and partly because they're easily hidden. The stageless equivalent of the above staged payload (`windows/meterpreter/reverse_tcp`) is `windows/meterpreter_reverse_tcp`. Note the use of `_` instead of the second `/` in the payload name. The key differences here are:
 
 * There is no "dumb" stager required.
 * The payload includes "all that is required to get a session running", which in this case is a copy of the `metsrv` DLL.

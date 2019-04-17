@@ -121,7 +121,7 @@ ghci> let addAndDouble = (*2) . (+)
     In the expression: (* 2) . (+)
     In the definition of `addAndDouble': addAndDouble = (* 2) . (+)
 ghci>
-````
+```
 
 As you can see, ghci doesn't like it. And rightly so! This is because the composition operator's signature is:
 ``` haskell

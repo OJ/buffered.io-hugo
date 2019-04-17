@@ -42,14 +42,15 @@ If you're going to come along and watch the streams while they're being recorded
 
 ## Music
 
-I like to play [Gai Barone](https://soundcloud.com/gai-barone) via SoundCloud while streaming as I think it's cool music that fits the vibe.
+In the past I liked to play [Gai Barone](https://soundcloud.com/gai-barone) via SoundCloud while streaming as I think it's cool music that fits the vibe. However, thanks to licensing concerns, I've had to switch. These days I make good use of a [Monstercat Gold](https://www.monstercat.com/gold) subscription.
 
 ## Donations
 
 If you're interested in supporting my efforts to explore and teach, you can do so via the following:
 
-* Sign up as a [Patreon](https://www.patreon.com/OJReeves)
-* Fire off a one off donation via [Ko-Fi](https://ko-fi.com/ojreeves)
-* Throw funny money at me via [1upcoin](https://1upcoin.com/donate/ojreeves)
+* Subscribe to me on [Twitch](https://twitch.tv/OJReeves).
+* Sign up as a [Patreon](https://www.patreon.com/OJReeves).
+* Fire off a one off donation via [Ko-Fi](https://ko-fi.com/ojreeves).
+* Throw funny money at me via [1upcoin](https://1upcoin.com/donate/ojreeves).
 
 Thanks!

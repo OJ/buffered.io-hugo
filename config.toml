@@ -1,129 +1,26 @@
-baseurl = "http://buffered.io/"
+baseurl = "/"
 languageCode = "en-au"
 title = "OJ's Perspective"
-theme = "hugo-future-imperfect"
-preserveTaxonomyNames = true
+copyright = "Copyright OJ Reeves 2019"
+theme = "eiio"
+themesdir = "themes"
+paginatePath = "page"
 paginate = 10
 disqusShortname = "ojsrants"
 googleAnalytics = ""
 
+[author]
+
+[taxonomies]
+category = "categories"
+tag = "tags"
+
 [permalinks]
-    post = "/posts/:slug/"
+post = "/posts/:slug/"
 
 [params]
-    # Sets the meta tag description, usually reserved for the main page
-    description          = "Security and Software Development"
-    # This will appear on the top left of the navigation bar
-    navbarTitle          = "OJ's Perspective"
-    # Social media buttons that appear on the sidebar
-    socialAppearAtTop    = true
-    socialAppearAtBottom = true
-    # set this to the section name if section is not post
-    viewMorePostLink     = "/posts/"
-
-# Optional Params
-    categoriesByCount    = true
-    includeReadingTime   = true
-    # The set of favicons used are based on the write-up from this link:
-    # https://github.com/audreyr/favicon-cheat-sheet
-    # Please see the favicon partial template for more information
-    loadFavicon          = false
-    faviconVersion       = ""
-
-    # Load custom CSS or JavaScript files. This replaces the deprecated params
-    # minifiedFilesCSS and minifiedFilesJS. The variable is an array so that you
-    # can load multiple files if necessary. You can also load the standard theme
-    # files by adding the value, "default".
-    # customCSS            = ["default", "/path/to/file"]
-    # customJS             = ["default", "/path/to/file"]
-
-    # Loading min files for exampleSite
-    customCSS            = ["/css/main.min.css"]
-    customJS             = ["/js/main.min.js"]
-
-# parms.intro will appear on the sidebar
-# This is optional, but it's suggested to use
-[params.intro]
-    header    = "OJ's Perspective"
-
-    paragraph = "Security and Software Development"
-
-    about     = "Yet another security nerd just trying to make things better, one hack at a time."
-
-# This will also appear on the sidebar.
-# A width of less than 100px is recommended
-# This is optional
-[params.intro.pic]
-    src       = "/images/oj.png"
-    # modify your picture in the shape of a circle or
-    # future imperfect's hexagonal shape
-    circle    = false
-    imperfect = true
-    width     = ""
-    alt       = "OJ Reeves"
-
-# Adjust the amount of recent posts on the sidebar.
-# This is optional. The default value 5 will be used
-[params.postAmount]
-    sidebar = 5
-
-# Set up your menu items in the navigation bar
-# You can use identifier to prepend a font awesome icon to your text
-[[menu.main]]
-    name = "Posts"
-    url = "/post"
-    identifier = "fa fa-newspaper-o"
-    weight = 1
-
-[[menu.main]]
-    name = "Categories"
-    url = "/categories"
-    weight = 2
-
-[[menu.main]]
-    name = "Contact"
-    url = "/contact"
-    weight = 3
-
-[[menu.main]]
-    name = "Streaming"
-    url = "/streaming"
-    weight = 3
-
-[[menu.main]]
-    name = "About"
-    url = "/about"
-    weight = 3
-
-# Insert your username and the icon will apear on the page as long as
-# socialAppearAtTop or socialAppearAtBottom is set to true in the params area
-# The social media icons will appear on the sidebar
-[social]
-    github          = "OJ"
-    bitbucket       = ""
-    jsfiddle        = ""
-    codepen         = ""
-    foursquare      = ""
-    dribbble        = ""
-    deviantart      = ""
-    behance         = ""
-    flickr          = ""
-    instagram       = ""
-    youtube         = ""
-    vimeo           = ""
-    vine            = ""
-    medium          = ""
-    wordpress       = ""
-    tumblr          = ""
-    xing            = ""
-    linkedin        = ""
-    slideshare      = ""
-    stackoverflow   = ""
-    reddit          = ""
-    pinterest       = ""
-    googleplus      = ""
-    facebook        = ""
-    facebook_admin  = ""
-    twitter_domain  = ""
-    twitter         = "TheColonial"
-    email           = ""
+description = "Security and Software Development"
+author = "OJ Reeves"
+github = "OJ"
+securityPolicy = true
+footerRight = "Trying to make the Internet less shit, one bit at a time."

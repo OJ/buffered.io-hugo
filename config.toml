@@ -2,14 +2,20 @@ baseurl = "/"
 languageCode = "en-au"
 title = "OJ's Perspective"
 copyright = "Copyright OJ Reeves 2019"
-theme = "eiio"
+theme = "ghostwriter"
 themesdir = "themes"
 paginatePath = "page"
 paginate = 10
 disqusShortname = "ojsrants"
 googleAnalytics = ""
 
+[Privacy]
+
+[Privacy.disqus]
+disable = true
+
 [author]
+name = "OJ Reeves"
 
 [taxonomies]
 category = "categories"
@@ -19,8 +25,45 @@ tag = "tags"
 post = "/posts/:slug/"
 
 [params]
+headling = "OJ's Perspective"
 description = "Security and Software Development"
 author = "OJ Reeves"
-github = "OJ"
-securityPolicy = true
-footerRight = "Trying to make the Internet less shit, one bit at a time."
+github = "https://github.com/OJ"
+twitter = "https://twitter.com/TheColonial"
+email = "oj@buffered.io"
+opengraph = true
+shareTwitter = true
+dateFormat = "2006-01-02"
+exponeaTrackVisits = false
+readingTime = true
+readingTimeText = "Read time:"
+
+[[menu.main]]
+name = "Home"
+url = "/"
+weight = 1
+
+[[menu.main]]
+name = "Live Streaming"
+url = "/streaming/"
+weight = 2
+
+[[menu.main]]
+name = "About"
+url = "/about/"
+weight = 3
+
+[[menu.main]]
+name = "Contact"
+url = "/contact/"
+weight = 4
+
+[[menu.main]]
+name = "Tags"
+url = "/tags/"
+weight = 5
+
+[[menu.main]]
+name = "Categories"
+url = "/categories/"
+weight = 6

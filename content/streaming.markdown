@@ -17,16 +17,16 @@ Hopefully you get a kick out of watching. Thanks for supporting the idea.
 
 ## Links
 
-* Live streams appear on my [Twitch.tv channel](https://www.twitch.tv/ojreeves).
-* All the videos that are streamed are archived on my [YouTube channel](https://youtube.com/c/OJReeves).
+* Live streams appear on my [Twitch.tv channel](https://twitch.tv/ojreeves).
+* All the videos that are streamed are archived on my [YouTube channel](https://youtube.com/c/OJReeves) and on my [Vimeo channel](https://vimeo.com/ojreeves). YouTube can be picky with copyright content, and hence archiving in both locations makes sense!
 * I'm archiving the binaries and exploits in a [Github repository](https://github.com/OJ/streams).
-* My partner in crime, [JustinSteven](https://twitter.com/justinsteven) also streams on [his Twitch.tv channel](https://www.twitch.tv/justinsteven), and is well worth watching.
+* My partner in crime, [JustinSteven](https://twitter.com/justinsteven) also streams on [his Twitch.tv channel](https://twitch.tv/justinsteven), and is well worth watching.
 * I use VIM, a lot. The configuration I'm using can be [found on Github](https://github.com/OJ/vim-config-linux).
 * My GDB is set up to make use of [gdb-peda](https://github.com/longld/peda).
 * While reverse engineering, I make use of [Binary Ninja](https://binary.ninja/) and [IDA Pro](https://www.hex-rays.com/products/ida/).
 * I am a huge fan and frequent user of [tmux](https://tmux.github.io/).
 * My window manager is [i3wm](http://i3wm.org).
-* On my desktop I run [Fedora Core](https://getfedora.org/).
+* I run [Fedora Core](https://getfedora.org/) and Windows inside VMWare Workstation when doing streaming, but my host OS is Windows 10 Ultimate.
 
 ## Suggestions
 
@@ -42,14 +42,15 @@ If you're going to come along and watch the streams while they're being recorded
 
 ## Music
 
-I like to play [Gai Barone](https://soundcloud.com/gai-barone) via SoundCloud while streaming as I think it's cool music that fits the vibe.
+In the past I liked to play [Gai Barone](https://soundcloud.com/gai-barone) via SoundCloud while streaming as I think it's cool music that fits the vibe. However, thanks to licensing concerns, I've had to switch. These days I make good use of a [Monstercat Gold](https://www.monstercat.com/gold) subscription.
 
 ## Donations
 
 If you're interested in supporting my efforts to explore and teach, you can do so via the following:
 
-* Sign up as a [Patreon](https://www.patreon.com/OJReeves)
-* Fire off a one off donation via [Ko-Fi](https://ko-fi.com/ojreeves)
-* Throw funny money at me via [1upcoin](https://1upcoin.com/donate/ojreeves)
+* Subscribe to me on [Twitch](https://twitch.tv/OJReeves).
+* Sign up as a [Patreon](https://www.patreon.com/OJReeves).
+* Fire off a one off donation via [Ko-Fi](https://ko-fi.com/ojreeves).
+* Throw funny money at me via [1upcoin](https://1upcoin.com/donate/ojreeves).
 
 Thanks!

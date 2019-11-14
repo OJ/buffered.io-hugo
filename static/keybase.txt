@@ -1,0 +1,56 @@
+==================================================================
+https://keybase.io/oj
+--------------------------------------------------------------------
+
+I hereby claim:
+
+  * I am an admin of https://buffered.io
+  * I am oj (https://keybase.io/oj) on keybase.
+  * I have a public key ASDEtNxWXtN0-EAM9rF-6tP-qjzzVpaJbq6rVyq8Eo0tIAo
+
+To do so, I am signing this object:
+
+{
+  "body": {
+    "key": {
+      "eldest_kid": "0120c4b4dc565ed374f8400cf6b17eead3feaa3cf35696896eaeab572abc128d2d200a",
+      "host": "keybase.io",
+      "kid": "0120c4b4dc565ed374f8400cf6b17eead3feaa3cf35696896eaeab572abc128d2d200a",
+      "uid": "2e3c33b21e9e8b318d83826df5755a00",
+      "username": "oj"
+    },
+    "merkle_root": {
+      "ctime": 1568165554,
+      "hash": "29347f39584bc78235baec696279dedfd07b8feea68d8e547f5f0045a1065d3e8233162bca5e8a867ae74af4846fb3430a7d7cabbdc152c457af697fde2ec5c9",
+      "hash_meta": "9188752f5a376409564d1b9ad95c808a589dc2956cd44584c69fbf5a5bfadb47",
+      "seqno": 6555672
+    },
+    "service": {
+      "entropy": "jo1DDPWuEuwDilyCVIQBvJrq",
+      "hostname": "buffered.io",
+      "protocol": "https:"
+    },
+    "type": "web_service_binding",
+    "version": 2
+  },
+  "client": {
+    "name": "keybase.io go client",
+    "version": "4.4.1"
+  },
+  "ctime": 1568165567,
+  "expire_in": 504576000,
+  "prev": "fea7381738ed928eba9a449102bf78ec50aae5d8809f1ac69e8d36f405998f21",
+  "seqno": 187,
+  "tag": "signature"
+}
+
+which yields the signature:
+
+hKRib2R5hqhkZXRhY2hlZMOpaGFzaF90eXBlCqNrZXnEIwEgxLTcVl7TdPhADPaxfurT/qo881aWiW6uq1cqvBKNLSAKp3BheWxvYWTES5cCzLvEIP6nOBc47ZKOuppEkQK/eOxQquXYgJ8axp6NNvQFmY8hxCB8Mg/980AxqlVMa4K96zp2cYtlhqyeDl4yYo5frt82nwIBwqNzaWfEQMbLW5OJfy/krMBuwURNc7qqZ1zE83CtvB3A+kGp0Raob0uUCHs2EH2SAQEowPctIJ/pwb2NnLzffXR4YsJRWwaoc2lnX3R5cGUgpGhhc2iCpHR5cGUIpXZhbHVlxCAkEUh8I9wl51jPFSSnow61IS5q6N7g0oMRZo+pAZO7aKN0YWfNAgKndmVyc2lvbgE=
+
+And finally, I am proving ownership of this host by posting or
+appending to this document.
+
+View my publicly-auditable identity here: https://keybase.io/oj
+
+==================================================================

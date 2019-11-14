@@ -1,0 +1,4 @@
+This is a Brave Rewards publisher verification file.
+
+Domain: buffered.io
+Token: 4a9103cfeea62dde3ef3e09a63397c998553d1b23dc292bc98f5a78d90b0803f
